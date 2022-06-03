@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 // import Home from './components/pages/Home.js'
 import Login from './components/pages/Login.js'
 import Nav from './components/navbar.js'
-import StickyFooter from './components/footer.js'
+import Footer from './components/footer.js'
 import Header from './components/header.js'
 import * as React from 'react';
 // import ReactDOM from 'react-dom';
@@ -17,7 +17,7 @@ function App() {
         <Route path='/' element={<Login/>} />
         <Route path='/signup' element={<SignUp/>} />
       </Routes>
-      <StickyFooter />
+      <Footer/>
     </>
   );
 }

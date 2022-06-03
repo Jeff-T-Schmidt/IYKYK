@@ -1,20 +1,50 @@
-import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+import React from "react";
+import {
+	Box,
+	Container,
+	Row,
+	Column,
+	Heading,
+} from "./footerStyle";
+import Button from '@mui/material/Button';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 
 
-export default function StickyFooter() {
-    return (
-
-
-        <Container maxWidth="sm" style={{postion: 'fixed', bottom: 0}} gutterBottom>
-            <Typography variant="body1">
-                My sticky footer can be found here.
-            </Typography>
-        </Container>
-
-    );
-}
+const Footer = () => {
+	return (
+		<Box>
+			<Container>
+				<Row>
+					<Column>
+						<Heading>
+							<Button size="large" variant="contained"
+								sx={{
+									color: 'yellow', backgroundColor: 'orange',
+									"&:hover": { backgroundColor: 'orange' }
+								}}>
+								<KeyboardBackspaceIcon></KeyboardBackspaceIcon>
+							</Button>
+						</Heading>
+					</Column>
+					{/* Column 2 spaceholder */}
+					<Column>
+						<Heading></Heading>
+					</Column>
+					{/* Column 3 spaceholder */}
+					<Column>
+						<Heading></Heading>
+					</Column>
+					<Column>
+						<Heading>
+							<Button size="large" variant="contained" sx={{ color: 'yellow', backgroundColor: 'orange' }}>
+								<PriorityHighIcon></PriorityHighIcon>
+							</Button>
+						</Heading>
+					</Column>
+				</Row>
+			</Container>
+		</Box>
+	);
+};
+export default Footer;
