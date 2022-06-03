@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './components/pages/Home.js'
 import Login from './components/pages/Login.js'
 import Nav from './components/navbar.js'
-import Footer from './components/footer.js'
+import StickyFooter from './components/footer.js'
 import Header from './components/header.js'
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
           <Route path='/' element={<Home />}/>
           <Route path="/login" element={<Login />} />
       </Routes>
-      <Footer />
+      <StickyFooter />
     </>
   );
 }
