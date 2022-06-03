@@ -6,13 +6,12 @@ import Footer from './components/footer.js'
 import Header from './components/header.js'
 import * as React from 'react';
 // import ReactDOM from 'react-dom';
-import Button from '@mui/material/Button';
 import SignUp from './components/pages/Signup.js'
 
 function App() {
   return (
     <>
-      {/* <Button variant="contained">Hello World</Button> */}
+     <Header/>
       <Routes>
         <Route path='/' element={<Login/>} />
         <Route path='/signup' element={<SignUp/>} />
