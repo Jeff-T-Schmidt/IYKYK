@@ -14,9 +14,9 @@ function App() {
     <>
      <Header/>
       <Routes>
-        <Route path='/' element={<Login/>} />
+        <Route path='/login' element={<Login/>} />
         <Route path='/signup' element={<SignUp/>} />
-        <Route path='/landing' element={<Landing/>} />
+        <Route path='/' element={<Landing/>} />
         <Route path='/home' element={<Home/>} />
         <Route path='/newEvent' element={<NewEvent/>} />
         <Route path='/profile' element={<Profile/>} />
