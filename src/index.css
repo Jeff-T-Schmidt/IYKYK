@@ -4,8 +4,8 @@ body {
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
       color: #444;
-      background: #022c43;
-      overflow: hidden;
+      background: white;
+      overflow-x: hidden;
       display: block;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
