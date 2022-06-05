@@ -1,0 +1,53 @@
+.headButtons {
+    display: flex;
+    margin-top: 1%;
+
+
+}
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.row2 {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.eventBox1 {
+    width: 700px;
+    height: 225px;  
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+}
+.eventImage1 {
+    width: 150px;
+    height: 150px;  
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 25px;
+    margin-top: 2%;
+    margin-left: 2%;
+} 
+.eventName1 {
+    width: 450px;
+    height: 50px;  
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 10px;
+    margin-left: 31%;
+    margin-top: -24%;
+}
+.eventDeets1 {
+    width: 450px;
+    height: 100px;  
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 10px;
+    margin-left: 31%;
+    margin-top: 3%;
+}
