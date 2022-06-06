@@ -74,6 +74,7 @@ export default function SignUp(props) {
                   name="email"
                   value={signupData.email}
                   autoComplete="email"
+                  onChange={(e)=>setSignupData({...signupData,email:e.target.value})}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -86,6 +87,7 @@ export default function SignUp(props) {
                   id="password"
                   value={signupData.password}
                   autoComplete="new-password"
+                  onChange={(e)=>setSignupData({...signupData,password:e.target.value})}
                 />
               </Grid>
             </Grid>
