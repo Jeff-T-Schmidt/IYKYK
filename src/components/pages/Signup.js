@@ -18,7 +18,7 @@ const theme = createTheme();
 
 export default function SignUp(props) {
   const [signupData, setSignupData] = useState({
-    fullName:"",
+    name:"",
     email:"",
     password:""
 })
@@ -26,7 +26,7 @@ export default function SignUp(props) {
     event.preventDefault();
     props.signup(signupData);
     setSignupData({
-        fullName:"",
+        name:"",
         email:"",
         password:""
     })
@@ -60,9 +60,9 @@ export default function SignUp(props) {
                   fullWidth
                   id="full"
                   label="Full Name"
-                  value={signupData.fullName}
+                  value={signupData.name}
                   autoFocus
-                  onChange={(e)=>setSignupData({...signupData,fullName:e.target.value})}
+                  onChange={(e)=>setSignupData({...signupData,name:e.target.value})}
                 />
               </Grid>
               <Grid item xs={12}>
