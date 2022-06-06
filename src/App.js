@@ -1,18 +1,18 @@
 import { Routes, Route } from 'react-router-dom'
-import Login from './components/pages/Login.js'
-import Footer from './components/footer.js'
-import Header from './components/header.js'
-import NewEvent from './components/pages/newEvent.js'
-import Profile from './components/pages/Profile.js'
-import Chat from './components/pages/Chat.js'
-import MyInvites from './components/pages/myInvites.js'
-import CreateEvent from './components/pages/createEvent.js'
-import Home from './components/pages/Home.js'
-import Landing from './components/pages/Landing.js'
+import Login from './pages/Login/index.js'
+import Footer from './components/Footer/index.js'
+import Header from './components/Header/index.js'
+import NewEvent from './pages/Events/index.js'
+import Profile from './pages/Profile/Profile.js.js.js'
+import Chat from './components/Chat/Chat.js.js.js.js'
+import MyInvites from './pages/Invites/index.js'
+import CreateEvent from './pages/Events/createEvent.js'
+import Home from './pages/Home/Home.js.js.js'
+import Landing from './pages/Landing/index.js'
 import * as React from 'react';
 import API from "./utils/API"
 import { useEffect,useState } from "react";
-import SignUp from './components/pages/Signup.js'
+import SignUp from './pages/Signup/index.js'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
