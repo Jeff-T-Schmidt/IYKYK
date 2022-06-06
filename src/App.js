@@ -10,6 +10,8 @@ import CreateEvent from './components/pages/createEvent.js'
 import Home from './components/pages/Home.js'
 import Landing from './components/pages/Landing.js'
 import * as React from 'react';
+import API from "./utils/API"
+import { useEffect,useState } from "react";
 import SignUp from './components/pages/Signup.js'
 import { useEffect,useState } from "react";
 import API from "./utils/API"
@@ -57,13 +59,16 @@ function App() {
       }
     })
   }
-
+  const logout = ()=>{
+    setToken(null);
+    localStorage.removeItem("token")
+  }
   return (
     <>
-     <Header isLoggedIn={isLoggedIn} userId={userId}/>
+     <Header isLoggedIn={isLoggedIn} userId={userId} logout={logout}/>
       <Routes>
-        <Route path='/login' element={<Login login={handleLoginSubmit} signup={handleSignupSubmit}/>} />
-        <Route path='/signup' element={<SignUp/>} />
+        <Route path='/login' element={<Login login={handleLoginSubmit}/>} />
+        <Route path='/signup' element={<SignUp signup={handleSignupSubmit}/>} />
         <Route path='/' element={<Landing/>} />
         <Route path='/home' element={<Home/>} />
         <Route path='/newEvent' element={<NewEvent/>} />

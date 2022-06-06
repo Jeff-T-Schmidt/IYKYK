@@ -35,15 +35,15 @@ module.exports = {
             }
         }).then(res=>res.json())
     },
-    updateUser:updatedUserData=>{
-        return fetch(`${BASE_URL}/api/users/${id}`,{
-            method:"PUT",
-            body:JSON.stringify(updatedUserData),
-            headers:{
-                "Content-Type":"application/json"
-            }
-        }).then(res=>res.json())
-    },
+    // updateUser:updatedUserData=>{
+    //     return fetch(`${BASE_URL}/api/users/${updatedUserData.userId}`,{
+    //         method:"PUT",
+    //         body:JSON.stringify(updatedUserData),
+    //         headers:{
+    //             "Content-Type":"application/json"
+    //         }
+    //     }).then(res=>res.json())
+    // },
     
     createEvent:(eventData,token)=>{
         return fetch(`${BASE_URL}/api/events`,{
