@@ -43,17 +43,19 @@ function App() {
   const handleLoginSubmit=loginData =>{
     console.log("handle login",loginData)
     API.login(loginData).then(data=>{
-      if(data.token){
-        setToken(data.token)
-        localStorage.setItem("token",data.token)
+      if(data){
+        setToken(data)
+        localStorage.setItem("token",data)
       }
     })
   }
   const handleSignupSubmit=signupData =>{
-    API.signup(signupData).then(data=>{
-      if(data.token){
-        setToken(data.token)
-        localStorage.setItem("token",data.token)
+    console.log(signupData)
+    API.signup(signupData).then(res=>res.json()).then(data=>{
+      console.log(data)
+      if(data){
+        setToken(data)
+        localStorage.setItem("token",data)
       }
     })
   }
