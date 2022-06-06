@@ -3,10 +3,6 @@ import AppBar from "@mui/material/AppBar";
 import Typography from "@mui/material/Typography";
 import { Link } from 'react-router-dom'
 
-const logout = () => {
-  localStorage.removeItem('token-info');
-  // setIsLoggedin(false);
-};
 
 export default function Header(props) {
   return (

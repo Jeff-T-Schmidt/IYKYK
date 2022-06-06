@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,17 +12,24 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import React,{useState} from 'react'
 
 const theme = createTheme();
 
-export default function SignUp() {
+export default function SignUp(props) {
+  const [signupData, setSignupData] = useState({
+    fullName:"",
+    email:"",
+    password:""
+})
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    props.signup(signupData);
+    setSignupData({
+        fullName:"",
+        email:"",
+        password:""
+    })
   };
 
   return (
@@ -53,7 +60,9 @@ export default function SignUp() {
                   fullWidth
                   id="full"
                   label="Full Name"
+                  value={signupData.fullName}
                   autoFocus
+                  onChange={(e)=>setSignupData({...signupData,fullName:e.target.value})}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -63,6 +72,7 @@ export default function SignUp() {
                   id="email"
                   label="Email Address"
                   name="email"
+                  value={signupData.username}
                   autoComplete="email"
                 />
               </Grid>
@@ -74,6 +84,7 @@ export default function SignUp() {
                   label="Password"
                   type="password"
                   id="password"
+                  value={signupData.password}
                   autoComplete="new-password"
                 />
               </Grid>
