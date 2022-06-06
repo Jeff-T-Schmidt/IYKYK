@@ -13,8 +13,6 @@ import * as React from 'react';
 import API from "./utils/API"
 import { useEffect,useState } from "react";
 import SignUp from './components/pages/Signup.js'
-import { useEffect,useState } from "react";
-import API from "./utils/API"
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

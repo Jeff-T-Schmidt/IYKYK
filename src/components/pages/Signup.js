@@ -72,7 +72,7 @@ export default function SignUp(props) {
                   id="email"
                   label="Email Address"
                   name="email"
-                  value={signupData.username}
+                  value={signupData.email}
                   autoComplete="email"
                 />
               </Grid>
