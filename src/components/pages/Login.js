@@ -15,14 +15,18 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function SignIn(props) {
+  const [loginData, setLoginData] = useState({
+    email:"",
+    password:""
+})
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    props.login(loginData);
+    setLoginData({
+        email:"",
+        password:""
+    })
   };
 
   return (
@@ -52,6 +56,8 @@ export default function SignIn() {
               label="Email Address"
               name="email"
               autoComplete="email"
+              value={loginData.email}
+              onChange={(e)=>setLoginData({...loginData,email:e.target.value})}
               autoFocus
             />
             <TextField
@@ -62,6 +68,8 @@ export default function SignIn() {
               label="Password"
               type="password"
               id="password"
+              value={loginData.password}
+              onChange={(e)=>setLoginData({...loginData,password:e.target.value})}
               autoComplete="current-password"
             />
             <Button
