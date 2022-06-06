@@ -63,7 +63,7 @@ function App() {
   }
   return (
     <>
-     <Header/>
+     <Header isLoggedIn={isLoggedIn} userId={userId} logout={logout}/>
       <Routes>
         <Route path='/login' element={<Login login={handleLoginSubmit}/>} />
         <Route path='/signup' element={<SignUp signup={handleSignupSubmit}/>} />
