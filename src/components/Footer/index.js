@@ -1,5 +1,5 @@
 import React from "react";
-import './footerStyle.css';
+import './Style.css';
 import Button from '@mui/material/Button';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';

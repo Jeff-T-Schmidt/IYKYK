@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom'
-import Login from './components/pages/Login.js'
-import Footer from './components/footer.js'
-import Header from './components/header.js'
-import NewEvent from './components/pages/newEvent.js'
-import Profile from './components/pages/Profile.js'
-import Home from './components/pages/Home.js'
-import Landing from './components/pages/Landing.js'
+import Login from './pages/Login/index.js'
+import Footer from './components/Footer/index.js'
+import Header from './components/Header/header.js'
+import NewEvent from './pages/Events/NewEvent/index.js'
+import Profile from './pages/Profile.js'
+import Home from './pages/Home.js'
+import Landing from './pages/Landing.js'
 import * as React from 'react';
-import SignUp from './components/pages/Signup.js'
+import SignUp from './pages/Signup.js'
 
 function App() {
   return (
