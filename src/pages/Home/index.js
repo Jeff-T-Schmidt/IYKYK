@@ -30,7 +30,7 @@ const Home = (props) => {
                 <div className='flex-container'>
                     <div className='headButtons'>
                         <div className='row1'>
-                            <Link to='/newEvent'>
+                            <Link to='/home'>
                                 <Button className="btn1" variant="contained">My Events</Button>
                             </Link>
                         </div>
@@ -40,7 +40,7 @@ const Home = (props) => {
                             </Link>
                         </div>
                         <div className='row3'>
-                            <Link to='/createevent'>
+                            <Link to='/newEvent'>
                                 <Button className="btn3" variant="contained">Create Event</Button>
                             </Link>
                         </div>
