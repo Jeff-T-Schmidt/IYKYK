@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import API from "../../utils/API"
 import './style.css'
 
+
 const Home = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userId, setUserId] = useState(null);
@@ -17,27 +18,12 @@ const Home = (props) => {
     }, [])
     useEffect(() => {
         if (!props.isLoggedIn) {
-            // API.verify(token).then(userData => {
-            //     if (userData.userId) {
-            //         setIsLoggedIn(true);
-            //         setUserId(userData.userId)
 
-            //     } else {
-            //         setIsLoggedIn(false);
-            //         setUserId(null)
-            //         // navigate("/")
-            //     }
-            // })
             navigate('/')
         }
-        // else {
-        //     setIsLoggedIn(false);
-        //     setUserId(null)
-        //     // navigate("/")
-
-        // }
     }
     )
+
     return (
         <div>
             <div>
@@ -60,6 +46,7 @@ const Home = (props) => {
                         </div>
                     </div>
                 </div>
+
                 <div className='eventBox1'>
                     <div className='eventImage1'>Event Image</div>
                     <div className='eventName1'>Event Name</div>
@@ -77,6 +64,7 @@ const Home = (props) => {
                 </div>
             </div>
         </div>
+
     )
 
 

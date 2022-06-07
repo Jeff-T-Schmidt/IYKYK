@@ -78,7 +78,7 @@ let navigate = useNavigate();
               onChange={(e)=>setLoginData({...loginData,password:e.target.value})}
               autoComplete="current-password"
             />
-            <Button
+            <Button 
               type="submit"
               fullWidth
               variant="contained"
