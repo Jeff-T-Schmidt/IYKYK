@@ -9,7 +9,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import React,{useState,useEffect} from 'react'
+import React,{useState, useEffect} from 'react'
 import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
@@ -29,12 +29,12 @@ export default function SignUp(props) {
         password:""
     })
   };
-  let navigate = useNavigate();
+  const navigate= useNavigate()
   useEffect(() => {
-      if (props.isLoggedIn) {
-          navigate('/home')
-      }
-    })
+    if (props.isLoggedIn) {
+
+        navigate('/home')
+    }})
 
   return (
     <ThemeProvider theme={theme}>
