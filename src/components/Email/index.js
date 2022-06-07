@@ -36,28 +36,28 @@ function Email() {
                     <input
                         type='text'
                         name='from_name'
-                        placeholder='from name'
+                        placeholder='from'
                         value={toSend.from_name}
                         onChange={handleChange}
                     />
                     <input
                         type='text'
                         name='to_name'
-                        placeholder='to name'
+                        placeholder='to'
                         value={toSend.to_name}
                         onChange={handleChange}
                     />
-                    <input
+                    {/* <input
                         type='text'
                         name='message'
-                        placeholder='Your message'
+                        placeholder='message'
                         value={toSend.message}
                         onChange={handleChange}
-                    />
+                    /> */}
                     <input
                         type='text'
                         name='reply_to'
-                        placeholder='Your email'
+                        placeholder='Recipient email address'
                         value={toSend.reply_to}
                         onChange={handleChange}
                     />
