@@ -12,6 +12,8 @@ import Landing from './components/pages/Landing.js'
 import * as React from 'react';
 import SignUp from './components/pages/Signup.js'
 
+
+
 function App() {
 
   return (
@@ -24,7 +26,7 @@ function App() {
         <Route path='/home' element={<Home/>} />
         <Route path='/newEvent' element={<NewEvent/>} />
         <Route path='/profile' element={<Profile/>} />
-        <Route path='/chat' element={<Chat/>} />
+        <Route path='/chat' element={<Chat/>}/>
         <Route path='/myinvites' element={<MyInvites/>} />
         <Route path='/createevent' element={<CreateEvent/>} />
       </Routes>
