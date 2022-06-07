@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Login from './pages/Login/index.js'
 import Footer from './components/Footer/index.js'
 import Header from './components/Header/index.js'
-import NewEvent from './pages/Events/index.js'
+import NewEvent from './pages/NewEvent/index.js'
 import Profile from './pages/Profile/index.js'
 import Chat from './components/Chat/index.js'
 import MyInvites from './pages/Invites/index.js'
@@ -13,6 +13,7 @@ import * as React from 'react';
 import API from "./utils/API"
 import { useEffect,useState } from "react";
 import SignUp from './pages/Signup/index.js'
+import CurrentEvent from './pages/Events/index.js'
 
 
 
@@ -30,6 +31,7 @@ function App() {
    if(token){
       API.verify(token).then(userData=>{
         if(userData.userId){
+          
           setIsLoggedIn(true);
           setUserId(userData.userId)
         } else {
@@ -78,6 +80,7 @@ function App() {
         <Route path='/chat' element={<Chat/>}/>
         <Route path='/myinvites' element={<MyInvites/>} />
         <Route path='/createevent' element={<CreateEvent/>} />
+        <Route path='/currentEvent' element={<CurrentEvent/>} />
       </Routes>
       <Footer/>
     </>

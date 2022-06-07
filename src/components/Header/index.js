@@ -7,10 +7,10 @@ import { Link } from 'react-router-dom'
 export default function Header(props) {
   return (
     <AppBar position="static" style={{ background: '#4285F4' }}>
-      <Link to='/home'>
+      <Link to='/'>
       {props.isLoggedIn?(
             <>
-                <Link to={`/home/${props.userId}`}><button>Home</button></Link>
+                <Link to={`/home`}><button>Home</button></Link>
                 <button onClick={props.logout}>Logout</button>
             </>
         ):(

@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
@@ -19,6 +20,7 @@ export default function SignIn(props) {
     email:"",
     password:""
 })
+let navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     props.login(loginData);
@@ -26,6 +28,10 @@ export default function SignIn(props) {
         email:"",
         password:""
     })
+    if (loginData){
+      let path= "/home"
+      navigate(path);
+    }
   };
 
   return (
