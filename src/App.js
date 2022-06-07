@@ -70,15 +70,15 @@ function App() {
     <>
      <Header isLoggedIn={isLoggedIn} userId={userId} logout={logout}/>
       <Routes>
-        <Route path='/login' element={<Login login={handleLoginSubmit}/>} />
-        <Route path='/signup' element={<SignUp signup={handleSignupSubmit}/>} />
-        <Route path='/' element={<Landing/>} />
-        <Route path='/home' element={<Home/>} />
-        <Route path='/newEvent' element={<NewEvent/>} />
-        <Route path='/profile' element={<Profile/>} />
-        <Route path='/chat' element={<Chat/>}/>
-        <Route path='/myinvites' element={<MyInvites/>} />
-        <Route path='/createevent' element={<CreateEvent/>} />
+        <Route path='/login' element={<Login login={handleLoginSubmit} userId={userId} isLoggedIn={isLoggedIn}/>} />
+        <Route path='/signup' element={<SignUp signup={handleSignupSubmit} userId={userId} isLoggedIn={isLoggedIn}/>} />
+        <Route path='/' element={<Landing userId={userId} isLoggedIn={isLoggedIn}/>} />
+        <Route path='/home' element={<Home userId={userId} isLoggedIn={isLoggedIn}/>} />
+        <Route path='/newEvent' element={<NewEvent userId={userId} isLoggedIn={isLoggedIn}/>} />
+        <Route path='/profile' element={<Profile userId={userId} isLoggedIn={isLoggedIn}/>} />
+        <Route path='/chat' element={<Chat userId={userId} isLoggedIn={isLoggedIn}/>}/>
+        <Route path='/myinvites' element={<MyInvites userId={userId} isLoggedIn={isLoggedIn}/>} />
+        <Route path='/createevent' element={<CreateEvent userId={userId} isLoggedIn={isLoggedIn}/>} />
       </Routes>
       <Footer/>
     </>

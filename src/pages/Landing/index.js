@@ -1,7 +1,16 @@
 import { Button } from "@mui/material";
 import './style.css'
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Landing() {
+
+export default function Landing(props) {
+    const navigate = useNavigate()
+    useEffect(()=>{
+        if(props.isLoggedIn){
+          navigate("/home")
+         }
+       })
     return (
         <div>
             <p className='landingP'>Welcome to IYKYK, where; if you know, you know.</p>

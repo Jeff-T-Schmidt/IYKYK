@@ -1,6 +1,14 @@
 import './style.css'
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Profile = () => {
+const Profile = (props) => {
+    const navigate = useNavigate()
+    useEffect(()=>{
+        if(!props.isLoggedIn){
+          navigate("/")
+         }
+       })
     return (
         <>
         <div className='container'>
