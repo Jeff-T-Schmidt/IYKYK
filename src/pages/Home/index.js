@@ -4,6 +4,10 @@ import {Link} from 'react-router-dom'
 import './style.css'
 
 const Home = () => {
+    // this.setState({
+    //     data: resoponseArray.map(item => {description: item.description})
+    // });
+
     return (
         <>
             <div className='flex-container'>
@@ -25,21 +29,24 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-                <div className='eventBox1'>
-                    <div className='eventImage1'>Event Image</div>
-                    <div className='eventName1'>Event Name</div>
-                    <div className='eventDeets1'>Event Details</div>
-                </div>
-                <div className='eventBox1'>
-                    <div className='eventImage1'>Event Image</div>
-                    <div className='eventName1'>Event Name</div>
-                    <div className='eventDeets1'>Event Details</div>
-                </div>
-                <div className='eventBox1'>
-                    <div className='eventImage1'>Event Image</div>
-                    <div className='eventName1'>Event Name</div>
-                    <div className='eventDeets1'>Event Details</div>
-                </div>
+            <div>
+                {
+                    this.state.data.map((item) => {
+                        return (
+                            <div>
+                                <div>
+                                    <img />
+                                </div>
+                                <div>
+                                    <h4> EVENT NAME </h4>
+                                    <p> EVENT DESCRIPTION </p>
+                                </div>
+                            </div>
+                        );
+                    })
+                }
+            </div>
+
         </>
 
     )
