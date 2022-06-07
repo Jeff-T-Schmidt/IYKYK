@@ -1,4 +1,4 @@
-import Email from '../Email.js';
+import Email from '../../components/Email';
 
 const MyInvites = () => {
     return (

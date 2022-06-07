@@ -1,6 +1,5 @@
 import { Button } from "@mui/material";
-import { blue } from "@mui/material/colors";
-import './landing.css'
+import './style.css'
 
 export default function Landing() {
     return (

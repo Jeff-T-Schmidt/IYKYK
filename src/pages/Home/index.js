@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom'
 
-import './home.css'
+import './style.css'
 
 const Home = () => {
     return (
