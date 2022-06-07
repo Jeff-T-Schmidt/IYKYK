@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom'
 
-import './home.css'
+import './style.css'
 
 const Home = () => {
     return (
@@ -10,7 +10,7 @@ const Home = () => {
                 <div className='headButtons'>
                     <div className='row1'>
                         <Link to='/newEvent'>
-                    <Button className="btn1"variant="contained">New Event</Button>
+                    <Button className="btn1"variant="contained">My Events</Button>
                         </Link>
                     </div>
                     <div className='row2'>

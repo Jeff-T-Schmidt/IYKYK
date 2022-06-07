@@ -14,6 +14,8 @@ import API from "./utils/API"
 import { useEffect,useState } from "react";
 import SignUp from './pages/Signup/index.js'
 
+
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState(null);
@@ -73,7 +75,7 @@ function App() {
         <Route path='/home' element={<Home/>} />
         <Route path='/newEvent' element={<NewEvent/>} />
         <Route path='/profile' element={<Profile/>} />
-        <Route path='/chat' element={<Chat/>} />
+        <Route path='/chat' element={<Chat/>}/>
         <Route path='/myinvites' element={<MyInvites/>} />
         <Route path='/createevent' element={<CreateEvent/>} />
       </Routes>

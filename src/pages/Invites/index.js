@@ -1,3 +1,11 @@
-const MyInvites = () => <h1>Hello from the myInvites page</h1>
+import Email from '../../components/Email';
+
+const MyInvites = () => {
+    return (
+        <>
+        <Email/>
+        </>
+    )
+}
 
 export default MyInvites
