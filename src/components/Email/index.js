@@ -61,7 +61,7 @@ function Email() {
                         value={toSend.reply_to}
                         onChange={handleChange}
                     />
-                    <button type='submit'>Submit</button>
+                    <button type='submit'>Invite</button>
                 </form>
             </div>
         </>
