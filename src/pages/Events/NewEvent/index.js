@@ -15,13 +15,13 @@ const NewEvent = (props) => {
         end_date: "",
         admin_id: props.userId
     })
+    const navigate = useNavigate()
 
 
     const handleSubmit = (event) => {
-        console.log(event)
         event.preventDefault();
-        API.createEvent(eventData,props.token).then(data => {
-            console.log(data)
+
+        API.createEvent(eventData, props.token).then(data => {
             setEventData({
                 title: "",
                 location: "",
@@ -30,9 +30,12 @@ const NewEvent = (props) => {
                 end_date: "",
                 admin_id: props.userId
             })
+            if (data) {
+                localStorage.setItem("eventID", data.id)
+            }
         })
+        navigate("/myinvites")
     };
-
 
     return (
         <>
@@ -93,25 +96,25 @@ const NewEvent = (props) => {
                     <label>
                         Start Date
                     </label>
-                    <input 
-                    type="date" 
-                    name='start_date'
-                    value={eventData.start_date}
-                    onChange={(e)=>setEventData({...eventData,start_date:e.target.value})}
+                    <input
+                        type="date"
+                        name='start_date'
+                        value={eventData.start_date}
+                        onChange={(e) => setEventData({ ...eventData, start_date: e.target.value })}
                     />
-                    
+
                 </div>
                 <div id="eventCalendarCard">
                     <label>
                         End Date
                     </label>
-                <input 
-                    type="date" 
-                    name='end_date'
-                    value={eventData.end_date}
-                    onChange={(e)=>setEventData({...eventData,end_date:e.target.value})}
+                    <input
+                        type="date"
+                        name='end_date'
+                        value={eventData.end_date}
+                        onChange={(e) => setEventData({ ...eventData, end_date: e.target.value })}
                     />
-                    
+
                 </div>
 
                 <button type="submit" variant="contained">Create Event</button>
