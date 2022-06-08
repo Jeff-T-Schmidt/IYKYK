@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import MaterialUIPickers from "./MuiDateRangePicker";
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import API from "../../../utils/API"
 
 const NewEvent = (props) => {
+    const navigate = useNavigate()
+    useEffect(()=>{
+        if(!props.isLoggedIn){
+          navigate("/")
+         }
+       })
     console.log(props.token)
     const [eventData, setEventData] = useState({
         title: "",

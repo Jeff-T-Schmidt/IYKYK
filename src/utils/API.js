@@ -44,6 +44,10 @@ module.exports = {
     //         }
     //     }).then(res=>res.json())
     // },
+
+    getOneEvent:(eventId)=>{
+        return fetch(`${BASE_URL}/api/events/${eventId}`).then(res=>res.json())
+    },
     
     createEvent:(eventData,token)=>{
         return fetch(`${BASE_URL}/api/events/`,{
