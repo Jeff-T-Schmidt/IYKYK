@@ -2,18 +2,16 @@ import { Routes, Route } from 'react-router-dom'
 import Login from './pages/Login/index.js'
 import Footer from './components/Footer/index.js'
 import Header from './components/Header/index.js'
-import NewEvent from './pages/NewEvent/index.js'
+import NewEvent from './pages/Events/NewEvent/index'
 import Profile from './pages/Profile/index.js'
 import Chat from './components/Chat/index.js'
 import MyInvites from './pages/Invites/index.js'
-import CreateEvent from './pages/Events/index.js'
 import Home from './pages/Home/index.js'
 import Landing from './pages/Landing/index.js'
 import * as React from 'react';
 import API from "./utils/API"
 import { useEffect, useState } from "react";
 import SignUp from './pages/Signup/index.js'
-import CurrentEvent from './pages/Events/index.js'
 
 
 
@@ -79,7 +77,6 @@ function App() {
         <Route path='/profile' element={<Profile userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/chat' element={<Chat userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/myinvites' element={<MyInvites userId={userId} isLoggedIn={isLoggedIn}/>} />
-        <Route path='/createevent' element={<CreateEvent userId={userId} isLoggedIn={isLoggedIn}/>} />
       </Routes>
       <Footer />
     </>
