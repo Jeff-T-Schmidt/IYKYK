@@ -14,35 +14,35 @@ const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-  }));
+}));
 
 const currentEvent = () => {
 
     return (
         <>
             <div id="eventInfoSection">
-            <Box sx={{ width: '100%' }}>
-                <Stack spacing={2}>
-                    <Item>EVENT TITLE</Item>
-                </Stack>
-            </Box>
-            <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={3}>
-                    <Grid item xs={4}>
-                        <Item>DATE</Item>
+                <Box sx={{ width: '100%' }}>
+                    <Stack spacing={2}>
+                        <Item>EVENT TITLE</Item>
+                    </Stack>
+                </Box>
+                <Box sx={{ flexGrow: 1 }}>
+                    <Grid container spacing={3}>
+                        <Grid item xs={4}>
+                            <Item>DATE</Item>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Item>TIME</Item>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Item>LOCATION</Item>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={4}>
-                        <Item>TIME</Item>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Item>LOCATION</Item>
-                    </Grid>
-                    </Grid>
-            </Box>
-            <SimpleAccordion />
+                </Box>
+                <SimpleAccordion />
             </div>
             <div id="groupChat">
-                
+
             </div>
             <div id="newPostCarousel">
                 <PostCarousel />
