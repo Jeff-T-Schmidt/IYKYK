@@ -1,32 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import MaterialUIPickers from "./MuiDateRangePicker";
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link} from 'react-router-dom'
+import API from "../../../utils/API"
 
 const NewEvent = (props) => {
-    console.log(props)
+    console.log(props.token)
     const [eventData, setEventData] = useState({
         title: "",
         location: "",
         details: "",
+        time_stamp:"",
         start_date: "",
         end_date: "",
         admin_id: props.userId
     })
     const handleSubmit = (event) => {
-
         event.preventDefault();
-        props.createEvent(eventData);
-        setEventData({
+       API.createEvent(eventData,props.token).then(result =>{
+           setEventData({
             title: "",
             location: "",
             details: "",
+            time_stamp:"",
             start_date: "",
             end_date: "",
-            admin_id: props.userId
+            admin_id: ""
         })
-    };
+    })
+}    
     return (
         <>
             <div className='flex-container'>
@@ -48,7 +50,8 @@ const NewEvent = (props) => {
                     </div>
                 </div>
             </div>
-            <div component="form" onSubmit={handleSubmit}>
+            <form component="form" onSubmit={handleSubmit}>    
+            
                 <div id="eventNameCard">
                     <TextField
                         id="standard-textarea"
@@ -60,17 +63,7 @@ const NewEvent = (props) => {
                         onChange={(e) => setEventData({ ...eventData, title: e.target.value })}
                     />
                 </div>
-                <div id="eventDescCard">
-                    <TextField
-                        id="standard-textarea"
-                        label="Tell us about your event..."
-                        placeholder="Placeholder"
-                        multiline
-                        variant="standard"
-                        value={eventData.details}
-                        onChange={(e) => setEventData({ ...eventData, details: e.target.value })}
-                    />
-                </div>
+            
                 <div id="eventMapCard">
                     <TextField
                         id="standard-textarea"
@@ -80,6 +73,17 @@ const NewEvent = (props) => {
                         variant="standard"
                         value={eventData.location}
                         onChange={(e) => setEventData({ ...eventData, location: e.target.value })}
+                    />
+                </div>
+                <div id="eventDescCard">
+                    <TextField
+                        id="standard-textarea"
+                        label="Tell us about your event..."
+                        placeholder="Placeholder"
+                        multiline
+                        variant="standard"
+                        value={eventData.details}
+                        onChange={(e) => setEventData({ ...eventData, details: e.target.value })}
                     />
                 </div>
                 <div id="eventCalendarCard">
@@ -106,13 +110,11 @@ const NewEvent = (props) => {
                     />
                     
                 </div>
-
                 <Button type="submit" variant="contained">Create Event</Button>
-            </div>
+            </form>
         </>
     );
 }
-
 
 
 export default NewEvent;

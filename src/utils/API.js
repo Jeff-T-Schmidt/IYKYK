@@ -46,7 +46,7 @@ module.exports = {
     // },
     
     createEvent:(eventData,token)=>{
-        return fetch(`${BASE_URL}/api/events`,{
+        return fetch(`${BASE_URL}/api/events/`,{
             method:"POST",
             body:JSON.stringify(eventData),
             headers:{
