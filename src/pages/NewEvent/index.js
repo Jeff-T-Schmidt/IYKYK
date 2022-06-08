@@ -1,10 +1,30 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import MaterialUIPickers from "./MuiDateRangePicker";
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useState } from "react";
 
-const newEvent = () => {
+const NewEvent = (props) => {
+    const [eventData,setEventData] = useState({
+        title:"",
+        location:"",
+        details:"",
+        start_date:"",
+        end_date:"",
+        admin_id:props.userId
+    })
+      const handleSubmit = (event) => {
+        event.preventDefault();
+        props.createEvent(eventData);
+        setEventData({
+            title:"",
+            location:"",
+            details:"",
+            start_date:"",
+            end_date:"",
+            admin_id:""
+        })
+      };
     return (
         <>
         <div className='flex-container'>
@@ -26,7 +46,7 @@ const newEvent = () => {
                         </div>
                     </div>
                 </div>
-            <div>
+            <div component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                 <div id="eventNameCard">
                     <TextField
                         id="standard-textarea"
@@ -34,6 +54,8 @@ const newEvent = () => {
                         placeholder="Placeholder"
                         multiline
                         variant="standard"
+                        value={eventData.title}
+                        onChange={(e)=>setEventData({...eventData,title:e.target.value})}
                     />
                 </div>
                 <div id="eventDescCard">
@@ -43,6 +65,8 @@ const newEvent = () => {
                         placeholder="Placeholder"
                         multiline
                         variant="standard"
+                        value={eventData.details}
+                        onChange={(e)=>setEventData({...eventData,details:e.target.value})}
                     />
                 </div>
                 <div id="eventMapCard">
@@ -52,10 +76,33 @@ const newEvent = () => {
                         placeholder="Placeholder"
                         multiline
                         variant="standard"
+                        value={eventData.location}
+                        onChange={(e)=>setEventData({...eventData,location:e.target.value})}
                     />
                 </div>
                 <div id="eventCalendarCard">
-                    <MaterialUIPickers />
+                    <label>
+                        Start Date
+                    </label>
+                    <input 
+                    type="date" 
+                    name='start_date'
+                    value={eventData.start_date}
+                    onChange={(e)=>setEventData({...eventData,start_date:e.target.value})}
+                    />
+                    
+                </div>
+                <div id="eventCalendarCard">
+                    <label>
+                        End Date
+                    </label>
+                <input 
+                    type="date" 
+                    name='end_date'
+                    value={eventData.end_date}
+                    onChange={(e)=>setEventData({...eventData,end_date:e.target.value})}
+                    />
+                    
                 </div>
                 
                 <Button variant="contained">Create Event</Button>
@@ -66,4 +113,4 @@ const newEvent = () => {
 
 
 
-export default newEvent;
+export default NewEvent;
