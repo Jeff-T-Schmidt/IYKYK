@@ -82,18 +82,29 @@ const NewEvent = (props) => {
                         onChange={(e) => setEventData({ ...eventData, location: e.target.value })}
                     />
                 </div>
-                <div class="eventCalendarCard">
-                    < MaterialUIPickers
-                        value={eventData.start_date}
-                        onChange={(e) => setEventData({ ...eventData, start_date: e.target.value })}
+                <div id="eventCalendarCard">
+                    <label>
+                        Start Date
+                    </label>
+                    <input 
+                    type="date" 
+                    name='start_date'
+                    value={eventData.start_date}
+                    onChange={(e)=>setEventData({...eventData,start_date:e.target.value})}
                     />
-
+                    
                 </div>
-                <div class="eventCalendarCard">
-                    < MaterialUIPickers
-                        value={eventData.end_date}
-                        onChange={(e) => setEventData({ ...eventData, end_date: e.target.value })}
+                <div id="eventCalendarCard">
+                    <label>
+                        End Date
+                    </label>
+                <input 
+                    type="date" 
+                    name='end_date'
+                    value={eventData.end_date}
+                    onChange={(e)=>setEventData({...eventData,end_date:e.target.value})}
                     />
+                    
                 </div>
 
                 <Button type="submit" variant="contained">Create Event</Button>
