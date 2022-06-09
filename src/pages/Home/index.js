@@ -7,12 +7,15 @@ import { useEffect, useState } from "react";
 import './style.css'
 
 const Home = (props) => {
-
+    const userEvents = []
     API.getOneUser(props.userId).then(data=> {
-        console.log(data)
-
+        console.log(data.events[0])
+        for (let i = 0; i < data.events.length ; i++) {
+            userEvents.push(data.events[i])
+            console.log(data.events[i])
+        }
     })
-
+    console.log(userEvents)
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userId, setUserId] = useState(null);
@@ -56,13 +59,13 @@ const Home = (props) => {
                 </div>
             </div>
             <div>
-                {/* {
+                {
                     userEvents.map((events) => (
                         <div key={events.id}>
                             <EventCard userEvent={events}/>
                         </div>
                     ))
-                } */}
+                }
             </div>
 
                 
