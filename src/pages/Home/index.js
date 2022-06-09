@@ -51,16 +51,25 @@ const Home = (props) => {
                     <div className='eventImage1'>Event Image</div>
                     <div className='eventName1'>Event Name</div>
                     <div className='eventDeets1'>Event Details</div>
+                    <Link to="/myinvites">
+                    <button className='invite'>Invite</button>
+                    </Link>
                 </div>
                 <div className='eventBox1'>
                     <div className='eventImage1'>Event Image</div>
                     <div className='eventName1'>Event Name</div>
                     <div className='eventDeets1'>Event Details</div>
+                    <Link to="/myinvites">
+                    <button className='invite'>Invite</button>
+                    </Link>
                 </div>
                 <div className='eventBox1'>
                     <div className='eventImage1'>Event Image</div>
                     <div className='eventName1'>Event Name</div>
                     <div className='eventDeets1'>Event Details</div>
+                    <Link to="/myinvites">
+                    <button className='invite'>Invite</button>
+                    </Link>
                 </div>
             </div>
         </div>

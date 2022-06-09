@@ -1,14 +1,33 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { send } from 'emailjs-com';
+import {API} from '../../utils/API'
+
+const savedEvent = localStorage.getItem('eventId');
+
 
 function Email() {
-    const [toSend, setToSend] = useState({
-        from_name: '',
-        to_name: '',
-        message: '',
-        reply_to: '',
-      });
+  const [toSend, setToSend] = useState({
+    from_name: '',
+    to_name: '',
+    location: '',
+    details: '',
+    title: ''
+  });
+
+
+
+  const savedEvent = localStorage.getItem('eventId');
+  useEffect(() => {
+    if (savedEvent) {
+  API.getOneEvent(savedEvent).then(eventData => {
+    const eventTitle = eventData.title;
+    const eventDetails = eventData.details;
+    const eventLocation = eventData.location;
+    setToSend({...toSend, title: eventTitle, details: eventDetails, location: eventLocation})
+  })
+}
+})
     
       const onSubmit = (e) => {
         e.preventDefault();
@@ -47,18 +66,22 @@ function Email() {
                         value={toSend.to_name}
                         onChange={handleChange}
                     />
-                    {/* <input
+                    <div
                         type='text'
-                        name='message'
-                        placeholder='message'
-                        value={toSend.message}
+                        name='details'
+                        value={toSend.details}
                         onChange={handleChange}
-                    /> */}
-                    <input
+                    />
+                    <div
                         type='text'
-                        name='reply_to'
-                        placeholder='Recipient email address'
-                        value={toSend.reply_to}
+                        name='location'
+                        value={toSend.location}
+                        onChange={handleChange}
+                    />
+                    <div
+                        type='text'
+                        name='title'
+                        value={toSend.title}
                         onChange={handleChange}
                     />
                     <button type='submit'>Invite</button>
