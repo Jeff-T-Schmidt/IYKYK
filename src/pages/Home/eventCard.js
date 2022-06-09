@@ -1,32 +1,53 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from "react";
 
-const eventCard = () => {
-    return (
-        <Card sx={{ maxWidth: 345 }}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
-              alt="green iguana"
-            />
-            <CardContent>
+
+const EventCard = ({userEvents}) => {
+  const navigate = useNavigate();
+  
+  const handleClick = (event) => {
+    event.preventDefault();
+    if (data) {
+      localStorage.setItem("eventID", data.id)
+    }
+    navigate('/currentevent');
+  }
+
+
+  return (
+    <div onClick={handleClick}>
+      {
+        userEvents.map((userEvents) => (
+            <div key={userEvents.id}>
+
+        <Card sx={{ maxWidth: 345 }} >
+          <CardActionArea  >
+            <CardContent >
               <Typography gutterBottom variant="h5" component="div">
-                Lizard
+                {userEvents.title}
+              </Typography>
+              <Typography gutterBottom variant="h5" component="div">
+                {userEvents.start_date}
+              </Typography>
+              <Typography gutterBottom variant="h5" component="div">
+                {userEvents.location}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                {userEvents.details}
               </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
-      );
+        </div>
+        ))
+      } 
+    </div>
+  );
 };
 
-export default eventCard
+export default EventCard

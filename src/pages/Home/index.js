@@ -1,11 +1,14 @@
 import Button from '@mui/material/Button';
+import * as API from "../../utils/API.js"
+import EventCard from './eventCard.js'
+import './style.css'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
-import API from "../../utils/API"
 import './style.css'
 
-
 const Home = (props) => {
+    const [eventData, setEventData] = useState();
+
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userId, setUserId] = useState(null);
     const [token, setToken] = useState(null)
@@ -15,6 +18,9 @@ const Home = (props) => {
         if (savedToken) {
             setToken(savedToken)
         }
+        API.getOneUser(props.userId).then(data=> {
+            setEventData(data.events)
+        })
     }, [])
     useEffect(() => {
         if (!props.isLoggedIn) {
@@ -46,23 +52,12 @@ const Home = (props) => {
                         </div>
                     </div>
                 </div>
-
-                <div className='eventBox1'>
-                    <div className='eventImage1'>Event Image</div>
-                    <div className='eventName1'>Event Name</div>
-                    <div className='eventDeets1'>Event Details</div>
-                </div>
-                <div className='eventBox1'>
-                    <div className='eventImage1'>Event Image</div>
-                    <div className='eventName1'>Event Name</div>
-                    <div className='eventDeets1'>Event Details</div>
-                </div>
-                <div className='eventBox1'>
-                    <div className='eventImage1'>Event Image</div>
-                    <div className='eventName1'>Event Name</div>
-                    <div className='eventDeets1'>Event Details</div>
-                </div>
             </div>
+            {eventData && <div>
+                <EventCard userEvents={eventData}/>
+            </div>}
+
+                
         </div>
 
     )
