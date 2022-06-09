@@ -18,11 +18,11 @@ const Home = (props) => {
     }, [])
     useEffect(() => {
         if (!props.isLoggedIn) {
-
             navigate('/')
         }
     }
     )
+
 
     return (
         <div>
