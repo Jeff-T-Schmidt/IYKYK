@@ -1,10 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { send } from 'emailjs-com';
-import {API} from '../../utils/API'
-
-const savedEvent = localStorage.getItem('eventId');
-
+import API from '../../utils/API'
 
 function Email() {
   const [toSend, setToSend] = useState({
@@ -17,17 +14,20 @@ function Email() {
 
 
 
-  const savedEvent = localStorage.getItem('eventId');
   useEffect(() => {
+    const savedEvent = localStorage.getItem('eventID');
     if (savedEvent) {
   API.getOneEvent(savedEvent).then(eventData => {
     const eventTitle = eventData.title;
     const eventDetails = eventData.details;
     const eventLocation = eventData.location;
     setToSend({...toSend, title: eventTitle, details: eventDetails, location: eventLocation})
+
+  }).catch(err => {
+    console.log(err)
   })
 }
-})
+},[])
     
       const onSubmit = (e) => {
         e.preventDefault();
@@ -66,19 +66,26 @@ function Email() {
                         value={toSend.to_name}
                         onChange={handleChange}
                     />
-                    <div
+                    <input
+                        type='text'
+                        name='reply_to'
+                        placeholder='recipient address'
+                        value={toSend.reply_to}
+                        onChange={handleChange}
+                    />
+                    <input hidden={true}
                         type='text'
                         name='details'
                         value={toSend.details}
                         onChange={handleChange}
                     />
-                    <div
+                    <input hidden={true}
                         type='text'
                         name='location'
                         value={toSend.location}
                         onChange={handleChange}
                     />
-                    <div
+                    <input hidden={true}
                         type='text'
                         name='title'
                         value={toSend.title}
