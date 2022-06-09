@@ -17,6 +17,8 @@ import CurrentEvent from './pages/Events/CurrentEvent/index.js'
 
 
 function App() {
+  const [eventId, setEventId] = useState("");
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState(null);
   const [token, setToken] = useState(null)
@@ -73,12 +75,12 @@ function App() {
         <Route path='/login' element={<Login login={handleLoginSubmit} userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/signup' element={<SignUp signup={handleSignupSubmit} userId={userId} isLoggedIn={isLoggedIn} />} />
         <Route path='/' element={<Landing userId={userId} isLoggedIn={isLoggedIn}/>} />
-        <Route path='/home' element={<Home userId={userId} isLoggedIn={isLoggedIn} />} />
+        <Route path='/home' element={<Home userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId}/>} />
         <Route path='/newEvent' element={<NewEvent userId={userId} token={token} isLoggedIn={isLoggedIn}/>} />
         <Route path='/profile' element={<Profile userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/chat' element={<Chat userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/myinvites' element={<MyInvites userId={userId} isLoggedIn={isLoggedIn}/>} />
-        <Route path='/currentEvent' element={<CurrentEvent userId={userId} isLoggedIn={isLoggedIn}/>} />
+        <Route path='/currentEvent' element={<CurrentEvent userId={userId} isLoggedIn={isLoggedIn} eventId={eventId}/>} />
       </Routes>
       <Footer />
     </>
