@@ -36,7 +36,7 @@ const CurrentEvent = (props) => {
             setMessageReceived(data.message);
         });
     }, [socket]);
-
+    
     return (
         <>
             <div id="eventInfoSection">
@@ -66,7 +66,7 @@ const CurrentEvent = (props) => {
             <div id="newPostCarousel">
                 <PostCarousel />
             </div>
-            <div>
+             <div>
                 <h1>Message Board</h1>
                 <input
                     placeholder="Message..."
