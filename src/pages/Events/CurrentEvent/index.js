@@ -30,14 +30,14 @@ const CurrentEvent = (props) => {
     //       navigate("/")
     //      }
     //    })
-       const sendMessage = () =>{
-          socket.emit("send_message",{message})
-       }
-       useEffect(() => {
+    const sendMessage = () => {
+        socket.emit("send_message", { message })
+    }
+    useEffect(() => {
         socket.on("receive_message", (data) => {
-          setMessageReceived(data.message);
+            setMessageReceived(data.message);
         });
-      }, [socket]);
+    }, [socket]);
 
     return (
         <>
@@ -70,15 +70,15 @@ const CurrentEvent = (props) => {
             </div>
             <div>
                 <h1>Message Board</h1>
-            <input
-        placeholder="Message..."
-        onChange={(event) => {
-          setMessage(event.target.value);
-        }}
-      />
-      <button onClick={sendMessage}> Send Message</button>
-      <h1> Message:</h1>
-      {messageReceived}
+                <input
+                    placeholder="Message..."
+                    onChange={(event) => {
+                        setMessage(event.target.value);
+                    }}
+                />
+                <button onClick={sendMessage}> Send Message</button>
+                <h1> Message:</h1>
+                {messageReceived}
             </div>
         </>
     );
