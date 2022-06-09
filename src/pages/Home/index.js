@@ -1,12 +1,15 @@
 import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom'
-
+import * as API from "../../utils/API.js"
+import EventCard from './eventCard.js'
 import './style.css'
 
-const Home = () => {
-    // this.setState({
-    //     data: resoponseArray.map(item => {description: item.description})
-    // });
+const Home = (props) => {
+
+    API.getOneUser(props.userId).then(data=> {
+        console.log(data)
+
+    })
 
     return (
         <>
@@ -30,21 +33,13 @@ const Home = () => {
                 </div>
             </div>
             <div>
-                {
-                    this.state.data.map((item) => {
-                        return (
-                            <div>
-                                <div>
-                                    <img />
-                                </div>
-                                <div>
-                                    <h4> EVENT NAME </h4>
-                                    <p> EVENT DESCRIPTION </p>
-                                </div>
-                            </div>
-                        );
-                    })
-                }
+                {/* {
+                    userEvents.map((events) => (
+                        <div key={events.id}>
+                            <EventCard userEvent={events}/>
+                        </div>
+                    ))
+                } */}
             </div>
 
         </>
