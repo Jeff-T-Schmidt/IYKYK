@@ -28,14 +28,14 @@ const CurrentEvent = (props) => {
     //       navigate("/")
     //      }
     //    })
-    //    const sendMessage = () =>{
-    //       socket.emit("send_message",{message})
-    //    }
-    //    useEffect(() => {
-    //     socket.on("receive_message", (data) => {
-    //       setMessageReceived(data.message);
-    //     });
-    //   }, [socket]);
+    const sendMessage = () => {
+        socket.emit("send_message", { message })
+    }
+    useEffect(() => {
+        socket.on("receive_message", (data) => {
+            setMessageReceived(data.message);
+        });
+    }, [socket]);
 
     return (
         <>
@@ -66,18 +66,18 @@ const CurrentEvent = (props) => {
             <div id="newPostCarousel">
                 <PostCarousel />
             </div>
-            {/* <div>
+             <div>
                 <h1>Message Board</h1>
-            <input
-        placeholder="Message..."
-        onChange={(event) => {
-          setMessage(event.target.value);
-        }}
-      />
-      <button onClick={sendMessage}> Send Message</button>
-      <h1> Message:</h1>
-      {messageReceived}
-            </div> */}
+                <input
+                    placeholder="Message..."
+                    onChange={(event) => {
+                        setMessage(event.target.value);
+                    }}
+                />
+                <button onClick={sendMessage}> Send Message</button>
+                <h1> Message:</h1>
+                {messageReceived}
+            </div>
         </>
     );
 }
