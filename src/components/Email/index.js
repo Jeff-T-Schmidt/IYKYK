@@ -1,14 +1,33 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { send } from 'emailjs-com';
+import API from '../../utils/API'
 
 function Email() {
-    const [toSend, setToSend] = useState({
-        from_name: '',
-        to_name: '',
-        message: '',
-        reply_to: '',
-      });
+  const [toSend, setToSend] = useState({
+    from_name: '',
+    to_name: '',
+    location: '',
+    details: '',
+    title: ''
+  });
+
+
+
+  useEffect(() => {
+    const savedEvent = localStorage.getItem('eventID');
+    if (savedEvent) {
+  API.getOneEvent(savedEvent).then(eventData => {
+    const eventTitle = eventData.title;
+    const eventDetails = eventData.details;
+    const eventLocation = eventData.location;
+    setToSend({...toSend, title: eventTitle, details: eventDetails, location: eventLocation})
+
+  }).catch(err => {
+    console.log(err)
+  })
+}
+},[])
     
       const onSubmit = (e) => {
         e.preventDefault();
@@ -36,29 +55,40 @@ function Email() {
                     <input
                         type='text'
                         name='from_name'
-                        placeholder='from name'
+                        placeholder='from'
                         value={toSend.from_name}
                         onChange={handleChange}
                     />
                     <input
                         type='text'
                         name='to_name'
-                        placeholder='to name'
+                        placeholder='to'
                         value={toSend.to_name}
                         onChange={handleChange}
                     />
                     <input
                         type='text'
-                        name='message'
-                        placeholder='Your message'
-                        value={toSend.message}
+                        name='reply_to'
+                        placeholder='recipient address'
+                        value={toSend.reply_to}
                         onChange={handleChange}
                     />
-                    <input
+                    <input hidden={true}
                         type='text'
-                        name='reply_to'
-                        placeholder='Your email'
-                        value={toSend.reply_to}
+                        name='details'
+                        value={toSend.details}
+                        onChange={handleChange}
+                    />
+                    <input hidden={true}
+                        type='text'
+                        name='location'
+                        value={toSend.location}
+                        onChange={handleChange}
+                    />
+                    <input hidden={true}
+                        type='text'
+                        name='title'
+                        value={toSend.title}
                         onChange={handleChange}
                     />
                     <button type='submit'>Invite</button>
