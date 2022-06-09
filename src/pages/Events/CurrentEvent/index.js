@@ -36,7 +36,7 @@ const CurrentEvent = (props) => {
             setMessageReceived(data.message);
         });
     }, [socket]);
-
+    
     return (
         <>
             <div id="eventInfoSection">

@@ -8,7 +8,7 @@ import './style.css'
 
 const Home = (props) => {
     const [eventData, setEventData] = useState();
-
+    const [selectedEvent, setSelectedEvent] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userId, setUserId] = useState(null);
     const [token, setToken] = useState(null)
@@ -54,7 +54,7 @@ const Home = (props) => {
                 </div>
             </div>
             {eventData && <div>
-                <EventCard userEvents={eventData}/>
+                <EventCard userEvents={eventData} setEventId={props.setEventId}/>
             </div>}
 
                 
