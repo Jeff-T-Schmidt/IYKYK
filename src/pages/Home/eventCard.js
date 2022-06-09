@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 const EventCard = ({userEvents}) => {
   const navigate = useNavigate();
   
-  const handleClick = (event) => {
+  const handleClick = (event,data) => {
     event.preventDefault();
     if (data) {
       localStorage.setItem("eventID", data.id)

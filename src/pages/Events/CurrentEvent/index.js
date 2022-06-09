@@ -107,7 +107,7 @@ const CurrentEvent = (props) => {
               </div>
               <div className="message-meta">
                 <p id="time">{messageContent.time}</p>
-                <p id="time">{messageContent.author}</p>
+                <p id="author">{messageContent.author}</p>
               </div>
             </div>)
           }) 
