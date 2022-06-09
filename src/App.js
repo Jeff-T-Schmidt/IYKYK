@@ -30,6 +30,7 @@ function App() {
     if (token) {
       API.verify(token).then(userData => {
         if (userData.userId) {
+          console.log(userId)
           setIsLoggedIn(true);
           setUserId(userData.userId)
         } else {
