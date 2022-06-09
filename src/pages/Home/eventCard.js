@@ -3,32 +3,51 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import * as API from "../../utils/API"
+import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from "react";
 
 
-const eventCard = (events) => {
+const EventCard = ({userEvents}) => {
+  const navigate = useNavigate();
   
+  const handleClick = (event) => {
+    event.preventDefault();
+    if (data) {
+      localStorage.setItem("eventID", data.id)
+    }
+    navigate('/currentevent');
+  }
+
 
   return (
-      <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {events.title}
-            </Typography>
-            <Typography gutterBottom variant="h5" component="div">
-              {events.start_date}
-            </Typography>
-            <Typography gutterBottom variant="h5" component="div">
-              {events.location}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {events.details}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    );
+    <div onClick={handleClick}>
+      {
+        userEvents.map((userEvents) => (
+            <div key={userEvents.id}>
+
+        <Card sx={{ maxWidth: 345 }} >
+          <CardActionArea  >
+            <CardContent >
+              <Typography gutterBottom variant="h5" component="div">
+                {userEvents.title}
+              </Typography>
+              <Typography gutterBottom variant="h5" component="div">
+                {userEvents.start_date}
+              </Typography>
+              <Typography gutterBottom variant="h5" component="div">
+                {userEvents.location}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {userEvents.details}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+        </div>
+        ))
+      } 
+    </div>
+  );
 };
 
-export default eventCard
+export default EventCard
