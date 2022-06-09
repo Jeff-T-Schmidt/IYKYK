@@ -10,7 +10,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
@@ -28,11 +28,12 @@ let navigate = useNavigate();
         email:"",
         password:""
     })
-    if (loginData){
-      let path= "/home"
-      navigate(path);
-    }
   };
+  useEffect(() => {
+    if (props.isLoggedIn) {
+
+        navigate('/home')
+    }})
 
   return (
     <ThemeProvider theme={theme}>
@@ -77,7 +78,7 @@ let navigate = useNavigate();
               onChange={(e)=>setLoginData({...loginData,password:e.target.value})}
               autoComplete="current-password"
             />
-            <Button
+            <Button 
               type="submit"
               fullWidth
               variant="contained"

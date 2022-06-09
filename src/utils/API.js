@@ -1,7 +1,7 @@
 //DEVELOP
 const BASE_URL="http://localhost:3001"
 //PROD
-// const BASE_URL="https://boardgames-back.herokuapp.com"
+// const BASE_URL="https://iykyk-backend.herokuapp.com"
 
 module.exports = {
     getAllUsers:()=>{
@@ -44,9 +44,13 @@ module.exports = {
     //         }
     //     }).then(res=>res.json())
     // },
+
+    getOneEvent:(eventId)=>{
+        return fetch(`${BASE_URL}/api/events/${eventId}`).then(res=>res.json())
+    },
     
     createEvent:(eventData,token)=>{
-        return fetch(`${BASE_URL}/api/events`,{
+        return fetch(`${BASE_URL}/api/events/`,{
             method:"POST",
             body:JSON.stringify(eventData),
             headers:{
