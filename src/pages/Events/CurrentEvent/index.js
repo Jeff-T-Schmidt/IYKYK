@@ -10,7 +10,9 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:3002")
+const socket = io("http://localhost:3002",{
+    transports: ['websocket'],
+})
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
