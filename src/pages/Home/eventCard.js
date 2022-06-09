@@ -7,25 +7,36 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 
 
-const EventCard = ({userEvents}) => {
+const EventCard = ({userEvents, setEventId}) => {
+  
+
   const navigate = useNavigate();
   
+<<<<<<< HEAD
   const handleClick = (event,data) => {
     event.preventDefault();
     if (data) {
       localStorage.setItem("eventID", data.id)
     }
+=======
+  const handleClick = (id) => {
+
+    setEventId(id)
+>>>>>>> dev
     navigate('/currentevent');
   }
 
 
   return (
-    <div onClick={handleClick}>
+    <div >
       {
         userEvents.map((userEvents) => (
-            <div key={userEvents.id}>
+            <div key={userEvents.id} onClick={ () => {
+                handleClick(userEvents.id)
+            }}>
 
-        <Card sx={{ maxWidth: 345 }} >
+        <Card sx={{ maxWidth: 345 }} id={`${userEvents.id}`}>
+          <Link to="/currentevent"/>
           <CardActionArea  >
             <CardContent >
               <Typography gutterBottom variant="h5" component="div">
