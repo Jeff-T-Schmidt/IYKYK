@@ -12,6 +12,7 @@ import * as React from 'react';
 import API from "./utils/API"
 import { useEffect, useState } from "react";
 import SignUp from './pages/Signup/index.js'
+import CurrentEvent from './pages/Events/CurrentEvent/index.js'
 
 
 
@@ -68,15 +69,15 @@ function App() {
     <>
       <Header isLoggedIn={isLoggedIn} userId={userId} logout={logout} />
       <Routes>
-
         <Route path='/login' element={<Login login={handleLoginSubmit} userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/signup' element={<SignUp signup={handleSignupSubmit} userId={userId} isLoggedIn={isLoggedIn} />} />
         <Route path='/' element={<Landing userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/home' element={<Home userId={userId} isLoggedIn={isLoggedIn} />} />
-        <Route path='/newEvent' element={<NewEvent userId={userId} isLoggedIn={isLoggedIn}/>} />
+        <Route path='/newEvent' element={<NewEvent userId={userId} token={token} isLoggedIn={isLoggedIn}/>} />
         <Route path='/profile' element={<Profile userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/chat' element={<Chat userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/myinvites' element={<MyInvites userId={userId} isLoggedIn={isLoggedIn}/>} />
+        <Route path='/currentEvent' element={<CurrentEvent userId={userId} isLoggedIn={isLoggedIn}/>} />
       </Routes>
       <Footer />
     </>
