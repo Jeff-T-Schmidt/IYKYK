@@ -4,39 +4,37 @@ import TextField from '@mui/material/TextField';
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import API from "../../../utils/API"
 
-const NewEvent = (props) => {
+const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
     const navigate = useNavigate()
     useEffect(() => {
-        if (!props.isLoggedIn) {
+        if (!isLoggedIn) {
             navigate("/")
         }
     })
-    console.log(props.token)
     const [eventData, setEventData] = useState({
         title: "",
         location: "",
         details: "",
-        // time_stamp: Date().now,
         start_date: "",
         end_date: "",
-        admin_id: props.userId
+        admin_id: userId
     })
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        API.createEvent(eventData, props.token).then(data => {
+        API.createEvent(eventData, token).then(data => {
             setEventData({
                 title: "",
                 location: "",
                 details: "",
-                // time_stamp: "",
                 start_date: "",
                 end_date: "",
-                admin_id: props.userId
+                admin_id: userId
             })
             if (data) {
-                localStorage.setItem("eventID", data.id)
+                console.log(data.id)
+                setEventId(data.id)
             }
         })
         navigate("/myinvites")
