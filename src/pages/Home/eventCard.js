@@ -4,7 +4,6 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link, Navigate, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from "react";
 
 
 const EventCard = ({userEvents, setEventId}) => {

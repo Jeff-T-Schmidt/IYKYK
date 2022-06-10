@@ -22,12 +22,12 @@ const Item = styled(Paper)(({ theme }) => ({
 const CurrentEvent = (props) => {
     const [message, setMessage] = useState("");
     const [messageReceived, setMessageReceived] = useState("");
-    // const navigate = useNavigate()
-    // useEffect(()=>{
-    //     if(!props.isLoggedIn){
-    //       navigate("/")
-    //      }
-    //    })
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (!props.isLoggedIn) {
+            navigate("/")
+        }
+    })
     const sendMessage = () => {
         socket.emit("send_message", { message })
     }
@@ -36,7 +36,7 @@ const CurrentEvent = (props) => {
             setMessageReceived(data.message);
         });
     }, [socket]);
-    
+
     return (
         <>
             <div id="eventInfoSection">
@@ -66,7 +66,7 @@ const CurrentEvent = (props) => {
             <div id="newPostCarousel">
                 <PostCarousel />
             </div>
-             <div>
+            <div>
                 <h1>Message Board</h1>
                 <input
                     placeholder="Message..."

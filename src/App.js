@@ -32,7 +32,6 @@ function App() {
     if (token) {
       API.verify(token).then(userData => {
         if (userData.userId) {
-          console.log(userId)
           setIsLoggedIn(true);
           setUserId(userData.userId)
         } else {
@@ -46,7 +45,6 @@ function App() {
     }
   }, [token])
   const handleLoginSubmit = loginData => {
-    console.log("handle login", loginData)
     API.login(loginData).then(data => {
       if (data) {
         setToken(data)
@@ -55,7 +53,6 @@ function App() {
     })
   }
   const handleSignupSubmit = signupData => {
-    console.log(signupData)
     API.signup(signupData).then(res => res.json()).then(data => {
       console.log(data)
       if (data) {
@@ -76,7 +73,7 @@ function App() {
         <Route path='/signup' element={<SignUp signup={handleSignupSubmit} userId={userId} isLoggedIn={isLoggedIn} />} />
         <Route path='/' element={<Landing userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/home' element={<Home userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId}/>} />
-        <Route path='/newEvent' element={<NewEvent userId={userId} token={token} isLoggedIn={isLoggedIn}/>}  eventId={eventId} setEventId={setEventId}/>
+        <Route path='/newEvent' element={<NewEvent userId={userId} token={token} isLoggedIn={isLoggedIn}eventId={eventId} setEventId={setEventId}/>} />
         <Route path='/profile' element={<Profile userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/chat' element={<Chat userId={userId} isLoggedIn={isLoggedIn}  eventId={eventId} setEventId={setEventId}/>} />
         <Route path='/myinvites' element={<MyInvites userId={userId} isLoggedIn={isLoggedIn}  eventId={eventId} setEventId={setEventId}/>} />
