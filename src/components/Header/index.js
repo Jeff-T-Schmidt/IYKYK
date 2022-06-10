@@ -2,6 +2,7 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Typography from "@mui/material/Typography";
 import { Link } from 'react-router-dom'
+import Button from '@mui/material/Button';
 
 
 export default function Header(props) {
@@ -11,17 +12,17 @@ export default function Header(props) {
       {props.isLoggedIn?(
             <>
                 {/* <Link to={`/home`}><button>Home</button></Link> */}
-                <button 
+                <Button 
                   
                   onClick={props.logout}
                 >
                   Logout
-                </button>
+                </Button>
             </>
         ):(
             <>
-                <Link to="/"><button>Login/Signup</button></Link> 
-                <Link to="/"><button style={{marginLeft: "92.9%"}}>Logout</button></Link> 
+                <Link to="/"><Button>Login/Signup</Button></Link> 
+
             </>
         )}
       
