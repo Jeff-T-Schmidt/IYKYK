@@ -85,21 +85,6 @@ const CurrentEvent = (props) => {
             </div>
             <div id="newPostCarousel">
                 <PostCarousel />
-<<<<<<< HEAD
-            </div>
-            <div>
-                <h1>Message Board</h1>
-                <input
-                    placeholder="Message..."
-                    onChange={(event) => {
-                        setMessage(event.target.value);
-                    }}
-                />
-                <button onClick={sendMessage}> Send Message</button>
-                <h1> Message:</h1>
-                {messageReceived}
-            </div>
-=======
             </div> */}
          <div className='chat-box'>
          <input className='nameInput'
@@ -144,7 +129,6 @@ const CurrentEvent = (props) => {
         <button onClick={sendMessage}>&#9658;</button>
       </div> 
       </div>
->>>>>>> dev
         </>
     )  
 }
