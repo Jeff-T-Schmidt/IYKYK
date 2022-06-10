@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import API from "../../../utils/API"
 
-const NewEvent = (props) => {
+const NewEvent = ({ props, setEventId }) => {
     const navigate = useNavigate()
     useEffect(() => {
         if (!props.isLoggedIn) {
@@ -35,7 +35,7 @@ const NewEvent = (props) => {
                 admin_id: props.userId
             })
             if (data) {
-                localStorage.setItem("eventID", data.id)
+                setEventId(data.id)
             }
         })
         navigate("/myinvites")

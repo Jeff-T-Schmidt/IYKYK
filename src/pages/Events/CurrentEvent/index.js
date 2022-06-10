@@ -42,7 +42,7 @@ const CurrentEvent = (props) => {
             <div id="eventInfoSection">
                 <Box sx={{ width: '100%' }}>
                     <Stack spacing={2}>
-                        <Item>EVENT TITLE</Item>
+                        <Item>Title</Item>
                     </Stack>
                 </Box>
                 <Box sx={{ flexGrow: 1 }}>
@@ -66,7 +66,7 @@ const CurrentEvent = (props) => {
             <div id="newPostCarousel">
                 <PostCarousel />
             </div>
-             <div>
+            <div>
                 <h1>Message Board</h1>
                 <input
                     placeholder="Message..."
