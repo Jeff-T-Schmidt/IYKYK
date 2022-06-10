@@ -24,34 +24,34 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-const CurrentEvent = ({name, eventId,isLoggedIn}) => {
+const CurrentEvent = ({ name, eventId, isLoggedIn }) => {
     console.log(name)
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
     // const [username, setUsername] = useState(name);
-    const [oneEventData,setOneEventData] = useState({
+    const [oneEventData, setOneEventData] = useState({
     })
-    useEffect(()=>{
-        API.getOneEvent(eventId).then(data =>{
+    useEffect(() => {
+        API.getOneEvent(eventId).then(data => {
             console.log(data)
             setOneEventData(data)
         })
-    },[])
+    }, [])
     const navigate = useNavigate()
-    useEffect(()=>{
-        if(!isLoggedIn){
-          navigate("/")
-         }
-       })
+    useEffect(() => {
+        if (!isLoggedIn) {
+            navigate("/")
+        }
+    })
     const sendMessage = async () => {
         if (currentMessage !== "") {
             const messageData = {
-              author: name,
-              message: currentMessage,
-              time:
-                new Date(Date.now()).getHours() +
-                ":" +
-                new Date(Date.now()).getMinutes(),
+                author: name,
+                message: currentMessage,
+                time:
+                    new Date(Date.now()).getHours() +
+                    ":" +
+                    new Date(Date.now()).getMinutes(),
 
             };
 
@@ -89,7 +89,7 @@ const CurrentEvent = ({name, eventId,isLoggedIn}) => {
                         </Grid>
                     </Grid>
                 </Box>
-                <SimpleAccordion oneEventData = {oneEventData} setOneEventData={setOneEventData}/>
+                <SimpleAccordion oneEventData={oneEventData} setOneEventData={setOneEventData} />
             </div>
             {/* <div id="groupChat">
 
@@ -98,49 +98,49 @@ const CurrentEvent = ({name, eventId,isLoggedIn}) => {
                 <PostCarousel />
             </div> */}
 
-         <div className='chat-box'>
-         {/* <input className='nameInput'
+            <div className='chat-box'>
+                {/* <input className='nameInput'
             type="text"
             placeholder="John..."
             onChange={(event) => {
               setUsername(event.target.value);
             }}
           /> */}
-            <div className="chat-body">
-              <ScrollToBottom className="message-container">
-                 {messageList.map((messageContent) => {
-                     return(
-              <div
-                   className="message"
-                id={name === messageContent.author ? "you" : "other"}
-              >
-              <div className="message-content">
-                <p>{messageContent.message}</p>
-              </div>
-              <div className="message-meta">
-                <p id="time">{messageContent.time}</p>
-                <p id="author">{messageContent.author}</p>
-              </div>
-            </div>)
-          }) 
-        }
-        </ScrollToBottom>
-       </div>  
-       <div className="chat-footer">
-        <input
-          type="text"
-          value={currentMessage}
-          placeholder="Hey..."
-          onChange={(event) => {
-            setCurrentMessage(event.target.value);
-          }}
-          onKeyPress={(event) => {
-            event.key === "Enter" && sendMessage();
-          }}
-        />
-        <button onClick={sendMessage}>&#9658;</button>
-      </div> 
-      </div>
+                <div className="chat-body">
+                    <ScrollToBottom className="message-container">
+                        {messageList.map((messageContent) => {
+                            return (
+                                <div
+                                    className="message"
+                                    id={name === messageContent.author ? "you" : "other"}
+                                >
+                                    <div className="message-content">
+                                        <p>{messageContent.message}</p>
+                                    </div>
+                                    <div className="message-meta">
+                                        <p id="time">{messageContent.time}</p>
+                                        <p id="author">{messageContent.author}</p>
+                                    </div>
+                                </div>)
+                        })
+                        }
+                    </ScrollToBottom>
+                </div>
+                <div className="chat-footer">
+                    <input
+                        type="text"
+                        value={currentMessage}
+                        placeholder="Hey..."
+                        onChange={(event) => {
+                            setCurrentMessage(event.target.value);
+                        }}
+                        onKeyPress={(event) => {
+                            event.key === "Enter" && sendMessage();
+                        }}
+                    />
+                    <button onClick={sendMessage}>&#9658;</button>
+                </div>
+            </div>
 
         </>
     )
