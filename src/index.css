@@ -4,7 +4,10 @@ body {
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
       color: #444;
-      background: white;
+      background-image: url("./img/background/horizontalimg/horizbg-peoplelaughing3.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       overflow-x: hidden;
       display: block;
       margin:0;
