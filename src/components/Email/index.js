@@ -3,16 +3,15 @@ import { useState, useEffect } from 'react';
 import { send } from 'emailjs-com';
 import API from '../../utils/API'
 
-function Email({setEventId, eventId}) {
+function Email({setEventId, eventId, token}) {
   const [toSend, setToSend] = useState({
     from_name: '',
     to_name: '',
     location: '',
     details: '',
-    title: ''
+    title: '',
+    reply_to: ''
   });
-
-
 
   useEffect(() =>  {
 
@@ -40,6 +39,15 @@ function Email({setEventId, eventId}) {
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
         //put api post request here
+        const atData = {
+          event_id: eventId,
+          invited_email: toSend.reply_to
+        }
+        API.createAttendee(atData, token).then(res => {
+          if (res){
+            alert(`${atData.invited_email} has been invited to your event`)
+          }
+        })
       })
       .catch((err) => {
         console.log('FAILED...', err);
