@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { positions } from '@mui/system';
+import { CardActionArea } from '@mui/material';
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import API from "../../../utils/API"
 
@@ -61,67 +67,152 @@ const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
                     </div>
                 </div>
             </div>
-            <form component="form" onSubmit={handleSubmit}>
-                <div id="eventNameCard">
-                    <TextField
-                        id="standard-textarea"
-                        label="Make a name for your event..."
-                        placeholder="Placeholder"
-                        multiline
-                        variant="standard"
-                        value={eventData.title}
-                        onChange={(e) => setEventData({ ...eventData, title: e.target.value })}
-                    />
-                </div>
+            <form 
+                component="form" 
+                onSubmit={handleSubmit}
+            >   
+                <Card
+                    sx={{
+                        margin: 4,
+                        borderRadius: 5,
+                    }}
+                >
 
-                <div id="eventMapCard">
-                    <TextField
-                        id="standard-textarea"
-                        label="Enter your event location..."
-                        placeholder="Placeholder"
-                        multiline
-                        variant="standard"
-                        value={eventData.location}
-                        onChange={(e) => setEventData({ ...eventData, location: e.target.value })}
-                    />
-                </div>
-                <div id="eventDescCard">
-                    <TextField
-                        id="standard-textarea"
-                        label="Tell us about your event..."
-                        placeholder="Placeholder"
-                        multiline
-                        variant="standard"
-                        value={eventData.details}
-                        onChange={(e) => setEventData({ ...eventData, details: e.target.value })}
-                    />
-                </div>
-                <div id="eventCalendarCard">
-                    <label>
-                        Start Date
-                    </label>
-                    <input
-                        type="date"
-                        name='start_date'
-                        value={eventData.start_date}
-                        onChange={(e) => setEventData({ ...eventData, start_date: e.target.value })}
-                    />
+                    <CardContent 
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            justifyContent: 'space-evenly',
+                        }}
+                        id="dateContainer"
+                    >
+                        <CardContent></CardContent>
+                        <CardContent 
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                gap: 3,
+                            }}
+                            className="eventCalendarCard"
+                        >
+                            <Typography>
+                                Start Date
+                            </Typography>
+                            <input
+                                type="date"
+                                name='start_date'
+                                value={eventData.start_date}
+                                onChange={(e) => setEventData({ ...eventData, start_date: e.target.value })}
+                            />
+                        </CardContent>
+                        <CardContent 
+                            
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                gap: 3,
+                            }}
+                            className="eventCalendarCard"
+                        >
+                            <Typography>
+                                End Date
+                            </Typography>
+                            <input
+                                type="date"
+                                name='end_date'
+                                value={eventData.end_date}
+                                onChange={(e) => setEventData({ ...eventData, end_date: e.target.value })}
+                            />
+                        </CardContent>
+                        <CardContent></CardContent>
+                    </CardContent>
+                </Card>
+                
+                <Card
+                    sx={{
+                        margin: 4,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        borderRadius: 5,
+                    }}
+                    right
+                >
+                    <CardContent
+                        sx={{
+                            display:"flex",
+                            flexDirection:"row",
+                            justifyContent: "flex-start",
+                            gap: 10,
+                        }}
+                    >
+                        <CardContent 
+                            sx={{
+                                width: 1,
+                            }}
+                            id="eventNameCard"
+                        >
+                            <TextField
+                                sx={{
+                                    width: 1,
+                                }}
+                                id="standard-textarea"
+                                label="Title"
+                                placeholder="Make a name for your event..."
+                                multiline
+                                variant="standard"
+                                value={eventData.title}
+                                onChange={(e) => setEventData({ ...eventData, title: e.target.value })}
+                            />
+                        </CardContent>
 
-                </div>
-                <div id="eventCalendarCard">
-                    <label>
-                        End Date
-                    </label>
-                    <input
-                        type="date"
-                        name='end_date'
-                        value={eventData.end_date}
-                        onChange={(e) => setEventData({ ...eventData, end_date: e.target.value })}
-                    />
+                        <CardContent 
+                            sx={{
+                                width: 1,
+                            }}
+                            id="eventMapCard"
+                        >
+                            <TextField
+                                sx={{
+                                    width: 1,
+                                }}
+                                id="standard-textarea"
+                                label="Location"
+                                placeholder="Enter your event location..."
+                                multiline
+                                variant="standard"
+                                value={eventData.location}
+                                onChange={(e) => setEventData({ ...eventData, location: e.target.value })}
+                            />
+                        </CardContent>
+                    </CardContent>
 
-                </div>
+                    <CardContent id="eventDescCard">
+                        <TextField
+                            sx={{
+                                width:1,
+                            }}
+                            id="standard-textarea"
+                            label="Details"
+                            placeholder="Tell us about your event..."
+                            multiline
+                            variant="standard"
+                            value={eventData.details}
+                            onChange={(e) => setEventData({ ...eventData, details: e.target.value })}
+                        />
+                    </CardContent>
 
-                <button type="submit" variant="contained">Create Event</button>
+                </Card>
+                
+                <Box
+                    display="flex"
+                    justifyContent="flex-end"
+                    sx={{marginRight:4}}
+                >
+                    <Button
+                        type="submit" 
+                        variant="contained"
+                        >Create Event</Button>
+                </Box>
             </form>
         </>
     );
