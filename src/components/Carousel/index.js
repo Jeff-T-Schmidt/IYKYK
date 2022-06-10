@@ -61,8 +61,7 @@ const PostCarousel = (props) => {
     )
 }
 
-function Item(props)
-{
+function Item(props) {
     // FOR THE MODAL IN THE CAROUSEL
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
