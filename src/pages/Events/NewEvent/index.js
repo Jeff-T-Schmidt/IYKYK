@@ -11,12 +11,12 @@ const NewEvent = ({ props, setEventId }) => {
             navigate("/")
         }
     })
-    console.log(props.token)
+    // console.log(props.token)
     const [eventData, setEventData] = useState({
         title: "",
         location: "",
         details: "",
-        time_stamp: "",
+        // time_stamp: "",
         start_date: "",
         end_date: "",
         admin_id: props.userId
