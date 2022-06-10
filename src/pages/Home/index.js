@@ -50,7 +50,7 @@ const Home = (props) => {
                     </div>
                 </div>
             </div>
-            {eventData && <div>
+            {eventData && <div id="homeContainer" sx={{ display: 'flex', justifyContent: 'center',}}>
                 <EventCard userEvents={eventData} setEventId={props.setEventId}/>
             </div>}
 

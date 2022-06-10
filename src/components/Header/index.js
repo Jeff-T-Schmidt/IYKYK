@@ -10,8 +10,13 @@ export default function Header(props) {
       <Link to='/'>
       {props.isLoggedIn?(
             <>
-                <Link to={`/home`}><button>Home</button></Link>
-                <button onClick={props.logout}>Logout</button>
+                {/* <Link to={`/home`}><button>Home</button></Link> */}
+                <button 
+                  
+                  onClick={props.logout}
+                >
+                  Logout
+                </button>
             </>
         ):(
             <>
