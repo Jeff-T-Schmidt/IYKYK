@@ -9,31 +9,28 @@ import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-function Email() {
+function Email({setEventId, eventId, token}) {
   const [toSend, setToSend] = useState({
     from_name: '',
     to_name: '',
     location: '',
     details: '',
-    title: ''
+    title: '',
+    reply_to: ''
   });
 
+  useEffect(() =>  {
 
+      API.getOneEvent(eventId).then(eventData => {
+        console.log(eventId)
+        const eventTitle = eventData.title;
+        const eventDetails = eventData.details;
+        const eventLocation = eventData.location;
+        setToSend({ ...toSend, title: eventTitle, details: eventDetails, location: eventLocation })
 
-  useEffect(() => {
-    const savedEvent = localStorage.getItem('eventID');
-    if (savedEvent) {
-  API.getOneEvent(savedEvent).then(eventData => {
-    const eventTitle = eventData.title;
-    const eventDetails = eventData.details;
-    const eventLocation = eventData.location;
-    setToSend({...toSend, title: eventTitle, details: eventDetails, location: eventLocation})
-
-  }).catch(err => {
-    console.log(err)
-  })
-}
-},[])
+      }).catch(err => {
+        console.log(err)
+      })
     
       const onSubmit = (e) => {
         e.preventDefault();
@@ -126,6 +123,7 @@ function Email() {
             </Card>
         </>
     );
-}
+  }
+)}
 
 export default Email;
