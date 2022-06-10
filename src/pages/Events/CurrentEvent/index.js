@@ -8,9 +8,13 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import ScrollToBottom from "react-scroll-to-bottom";
 import { io } from "socket.io-client";
+import './style.css'
 
-const socket = io("http://localhost:3002")
+const socket = io("http://localhost:3002",{
+    transports: ['websocket'],
+})
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -20,26 +24,42 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const CurrentEvent = (props) => {
-    const [message, setMessage] = useState("");
-    const [messageReceived, setMessageReceived] = useState("");
+    const [currentMessage, setCurrentMessage] = useState("");
+    const [messageList, setMessageList] = useState([]);
+    const [username, setUsername] = useState("");
     // const navigate = useNavigate()
     // useEffect(()=>{
     //     if(!props.isLoggedIn){
     //       navigate("/")
     //      }
     //    })
-    const sendMessage = () => {
-        socket.emit("send_message", { message })
-    }
-    useEffect(() => {
-        socket.on("receive_message", (data) => {
-            setMessageReceived(data.message);
-        });
-    }, [socket]);
-    
+    const sendMessage = async () => {
+        if (currentMessage !== "") {
+            const messageData = {
+              author: username,
+              message: currentMessage,
+              time:
+                new Date(Date.now()).getHours() +
+                ":" +
+                new Date(Date.now()).getMinutes(),
+            };
+      
+            await socket.emit("send_message", messageData);
+            setMessageList((list) => [...list, messageData]);
+            setCurrentMessage("");
+          }
+        };
+      
+        useEffect(() => {
+          socket.on("receive_message", (data) => {
+            setMessageList((list) => [...list, data]);
+          });
+        }, [socket]);
+  
+
     return (
         <>
-            <div id="eventInfoSection">
+            {/* <div id="eventInfoSection">
                 <Box sx={{ width: '100%' }}>
                     <Stack spacing={2}>
                         <Item>EVENT TITLE</Item>
@@ -65,21 +85,52 @@ const CurrentEvent = (props) => {
             </div>
             <div id="newPostCarousel">
                 <PostCarousel />
-            </div>
-             <div>
-                <h1>Message Board</h1>
-                <input
-                    placeholder="Message..."
-                    onChange={(event) => {
-                        setMessage(event.target.value);
-                    }}
-                />
-                <button onClick={sendMessage}> Send Message</button>
-                <h1> Message:</h1>
-                {messageReceived}
-            </div>
+            </div> */}
+         <div className='chat-box'>
+         <input className='nameInput'
+            type="text"
+            placeholder="John..."
+            onChange={(event) => {
+              setUsername(event.target.value);
+            }}
+          />
+            <div className="chat-body">
+              <ScrollToBottom className="message-container">
+                 {messageList.map((messageContent) => {
+                     return(
+              <div
+                   className="message"
+                id={username === messageContent.author ? "you" : "other"}
+              >
+              <div className="message-content">
+                <p>{messageContent.message}</p>
+              </div>
+              <div className="message-meta">
+                <p id="time">{messageContent.time}</p>
+                <p id="author">{messageContent.author}</p>
+              </div>
+            </div>)
+          }) 
+        }
+        </ScrollToBottom>
+       </div>  
+       <div className="chat-footer">
+        <input
+          type="text"
+          value={currentMessage}
+          placeholder="Hey..."
+          onChange={(event) => {
+            setCurrentMessage(event.target.value);
+          }}
+          onKeyPress={(event) => {
+            event.key === "Enter" && sendMessage();
+          }}
+        />
+        <button onClick={sendMessage}>&#9658;</button>
+      </div> 
+      </div>
         </>
-    );
+    )  
 }
 
 export default CurrentEvent
