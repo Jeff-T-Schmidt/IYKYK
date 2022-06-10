@@ -23,16 +23,17 @@ const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        API.createEvent(eventData, props.token).then(data => {
+        API.createEvent(eventData, token).then(data => {
             setEventData({
                 title: "",
                 location: "",
                 details: "",
                 start_date: "",
                 end_date: "",
-                admin_id: props.userId
+                admin_id: userId
             })
             if (data) {
+                console.log(data.id)
                 setEventId(data.id)
             }
         })
