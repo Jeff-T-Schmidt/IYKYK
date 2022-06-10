@@ -39,7 +39,7 @@ const MyInvites = (props) => {
                 </div>
             </div>
             <div></div>
-            <Email />
+            <Email eventId={props.eventId} />
         </>
     )
 }
