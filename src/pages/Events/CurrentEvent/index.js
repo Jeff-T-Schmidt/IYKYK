@@ -13,7 +13,7 @@ import { io } from "socket.io-client";
 import './style.css'
 import API from '../../../utils/API.js';
 
-const socket = io("http://localhost:3002",{
+const socket = io("http://localhost:3002", {
     transports: ['websocket'],
 })
 const Item = styled(Paper)(({ theme }) => ({
@@ -52,20 +52,21 @@ const CurrentEvent = ({name, eventId,isLoggedIn}) => {
                 new Date(Date.now()).getHours() +
                 ":" +
                 new Date(Date.now()).getMinutes(),
+
             };
-      
+
             await socket.emit("send_message", messageData);
             setMessageList((list) => [...list, messageData]);
             setCurrentMessage("");
-          }
-        };
-      
-        useEffect(() => {
-          socket.on("receive_message", (data) => {
+        }
+    };
+
+    useEffect(() => {
+        socket.on("receive_message", (data) => {
             setMessageList((list) => [...list, data]);
-          });
-        }, [socket]);
-  
+        });
+    }, [socket]);
+
 
     return (
         <>
@@ -96,6 +97,7 @@ const CurrentEvent = ({name, eventId,isLoggedIn}) => {
             <div id="newPostCarousel">
                 <PostCarousel />
             </div> */}
+
          <div className='chat-box'>
          {/* <input className='nameInput'
             type="text"
@@ -139,8 +141,9 @@ const CurrentEvent = ({name, eventId,isLoggedIn}) => {
         <button onClick={sendMessage}>&#9658;</button>
       </div> 
       </div>
+
         </>
-    )  
+    )
 }
 
 export default CurrentEvent

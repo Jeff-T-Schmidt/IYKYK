@@ -58,5 +58,15 @@ module.exports = {
                 authorization:`Bearer ${token}`
             }
         }).then(res=>res.json())
+    },
+    createAttendee:(attendeeData,token)=>{
+        return fetch(`${BASE_URL}/api/events/attendees`,{
+            method:"POST",
+            body:JSON.stringify(attendeeData),
+            headers:{
+                "Content-Type":"application/json",
+                authorization:`Bearer ${token}`
+            }
+        }).then(res=>res.json())
     }
 }
