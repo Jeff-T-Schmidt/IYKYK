@@ -4,22 +4,20 @@ import TextField from '@mui/material/TextField';
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import API from "../../../utils/API"
 
-const NewEvent = ({ props, setEventId }) => {
+const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
     const navigate = useNavigate()
     useEffect(() => {
-        if (!props.isLoggedIn) {
+        if (!isLoggedIn) {
             navigate("/")
         }
     })
-    // console.log(props.token)
     const [eventData, setEventData] = useState({
         title: "",
         location: "",
         details: "",
-        // time_stamp: "",
         start_date: "",
         end_date: "",
-        admin_id: props.userId
+        admin_id: userId
     })
 
     const handleSubmit = (event) => {
