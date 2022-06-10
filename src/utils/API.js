@@ -48,6 +48,10 @@ module.exports = {
     getOneEvent:(eventId)=>{
         return fetch(`${BASE_URL}/api/events/${eventId}`).then(res=>res.json())
     },
+
+    getEventByAdmin:(adminId)=>{
+        return fetch(`${BASE_URL}/api/events/admin/${adminId}`).then(res=>res.json())
+    },
     
     createEvent:(eventData,token)=>{
         return fetch(`${BASE_URL}/api/events/`,{

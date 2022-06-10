@@ -4,13 +4,19 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link, Navigate, useNavigate } from 'react-router-dom'
-
-
-const EventCard = ({userEvents, setEventId}) => {
-  
-
+import { useEffect, useState } from "react";
+import API from "../../utils/API.js"
+const EventCard = ({userId,userEvents, setEventId}) => {
+  console.log(userId)
+  const [adminEvent,setAdminEvent] = useState([])
   const navigate = useNavigate();
   
+  useEffect(()=>{
+    API.getEventByAdmin(userId).then(data=>{
+      console.log(data)
+      setAdminEvent(data)
+    })
+  },[])
   const handleClick = (id) => {
 
     setEventId(id)
@@ -19,9 +25,9 @@ const EventCard = ({userEvents, setEventId}) => {
 
 
   return (
-    <div >
+    <>
       {
-        userEvents.map((userEvents) => (
+        adminEvent.map((userEvents) => (
             <div key={userEvents.id} onClick={ () => {
                 handleClick(userEvents.id)
             }}>
@@ -48,7 +54,7 @@ const EventCard = ({userEvents, setEventId}) => {
         </div>
         ))
       } 
-    </div>
+      </>
   );
 };
 

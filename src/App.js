@@ -31,25 +31,24 @@ function App() {
   useEffect(() => {
     if (token) {
       API.verify(token).then(userData => {
+        console.log(userData)
         if (userData.userId) {
           setIsLoggedIn(true);
           setUserId(userData.userId)
-          setName(userData.name)
         } else {
           setIsLoggedIn(false);
           setUserId(null)
-          setName(null)
         }
       })
     } else {
       setIsLoggedIn(false);
       setUserId(null)
-      setName(null)
     }
   }, [token])
   
   useEffect(()=>{
     API.getOneUser(userId).then(data=>{
+      console.log(data)
       setName(data.name)
     })
   },[])

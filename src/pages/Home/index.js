@@ -6,7 +6,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import './style.css'
 
-const Home = (props) => {
+const Home = ({userId,isLoggedIn,setEventId}) => {
     const [eventData, setEventData] = useState();
     const [token, setToken] = useState(null)
     const navigate = useNavigate();
@@ -15,12 +15,12 @@ const Home = (props) => {
         if (savedToken) {
             setToken(savedToken)
         }
-        API.getOneUser(props.userId).then(data=> {
+        API.getOneUser(userId).then(data=> {
             setEventData(data.events)
         })
     }, [])
     useEffect(() => {
-        if (!props.isLoggedIn) {
+        if (!isLoggedIn) {
             navigate('/')
         }
     }
@@ -51,7 +51,7 @@ const Home = (props) => {
                 </div>
             </div>
             {eventData && <div>
-                <EventCard userEvents={eventData} setEventId={props.setEventId}/>
+                <EventCard userId={userId} userEvents={eventData} setEventId={setEventId}/>
             </div>}
 
                 
