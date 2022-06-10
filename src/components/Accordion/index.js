@@ -4,8 +4,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-export default function SimpleAccordion() {
+export default function SimpleAccordion({oneEventData}) {
   return (
     <div>
       <Accordion>
@@ -18,7 +17,7 @@ export default function SimpleAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            This is where we can put a detailed description of the event.  We can really just type whatever we want here, and this way the user can make their description long without it always taking up the whole screen.
+            {oneEventData.details}
           </Typography>
         </AccordionDetails>
       </Accordion>

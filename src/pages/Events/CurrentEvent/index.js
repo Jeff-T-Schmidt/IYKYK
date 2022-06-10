@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react'
 import ScrollToBottom from "react-scroll-to-bottom";
 import { io } from "socket.io-client";
 import './style.css'
+import API from '../../../utils/API.js';
 
 const socket = io("http://localhost:3002",{
     transports: ['websocket'],
@@ -23,20 +24,29 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-const CurrentEvent = (props) => {
+const CurrentEvent = ({name, eventId,isLoggedIn}) => {
+    console.log(name)
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
-    const [username, setUsername] = useState("");
-    // const navigate = useNavigate()
-    // useEffect(()=>{
-    //     if(!props.isLoggedIn){
-    //       navigate("/")
-    //      }
-    //    })
+    // const [username, setUsername] = useState(name);
+    const [oneEventData,setOneEventData] = useState({
+    })
+    useEffect(()=>{
+        API.getOneEvent(eventId).then(data =>{
+            console.log(data)
+            setOneEventData(data)
+        })
+    },[])
+    const navigate = useNavigate()
+    useEffect(()=>{
+        if(!isLoggedIn){
+          navigate("/")
+         }
+       })
     const sendMessage = async () => {
         if (currentMessage !== "") {
             const messageData = {
-              author: username,
+              author: name,
               message: currentMessage,
               time:
                 new Date(Date.now()).getHours() +
@@ -59,48 +69,48 @@ const CurrentEvent = (props) => {
 
     return (
         <>
-            {/* <div id="eventInfoSection">
+            <div id="eventInfoSection">
                 <Box sx={{ width: '100%' }}>
                     <Stack spacing={2}>
-                        <Item>EVENT TITLE</Item>
+                        <Item><h2>Title</h2>{oneEventData.title}</Item>
                     </Stack>
                 </Box>
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={3}>
                         <Grid item xs={4}>
-                            <Item>DATE</Item>
+                            <Item>Start Date: {oneEventData.start_date}</Item>
                         </Grid>
                         <Grid item xs={4}>
-                            <Item>TIME</Item>
+                            <Item>End Date: {oneEventData.end_date}</Item>
                         </Grid>
                         <Grid item xs={4}>
-                            <Item>LOCATION</Item>
+                            <Item>Location: {oneEventData.location}</Item>
                         </Grid>
                     </Grid>
                 </Box>
-                <SimpleAccordion />
+                <SimpleAccordion oneEventData = {oneEventData} setOneEventData={setOneEventData}/>
             </div>
-            <div id="groupChat">
+            {/* <div id="groupChat">
 
             </div>
             <div id="newPostCarousel">
                 <PostCarousel />
             </div> */}
          <div className='chat-box'>
-         <input className='nameInput'
+         {/* <input className='nameInput'
             type="text"
             placeholder="John..."
             onChange={(event) => {
               setUsername(event.target.value);
             }}
-          />
+          /> */}
             <div className="chat-body">
               <ScrollToBottom className="message-container">
                  {messageList.map((messageContent) => {
                      return(
               <div
                    className="message"
-                id={username === messageContent.author ? "you" : "other"}
+                id={name === messageContent.author ? "you" : "other"}
               >
               <div className="message-content">
                 <p>{messageContent.message}</p>
