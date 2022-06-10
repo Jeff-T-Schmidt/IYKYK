@@ -12,17 +12,9 @@ const EventCard = ({userEvents, setEventId}) => {
 
   const navigate = useNavigate();
   
-<<<<<<< HEAD
-  const handleClick = (event,data) => {
-    event.preventDefault();
-    if (data) {
-      localStorage.setItem("eventID", data.id)
-    }
-=======
   const handleClick = (id) => {
 
     setEventId(id)
->>>>>>> dev
     navigate('/currentevent');
   }
 

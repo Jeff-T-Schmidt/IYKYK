@@ -16,7 +16,7 @@ const NewEvent = (props) => {
         title: "",
         location: "",
         details: "",
-        time_stamp: Date().now,
+        // time_stamp: Date().now,
         start_date: "",
         end_date: "",
         admin_id: props.userId
@@ -30,7 +30,7 @@ const NewEvent = (props) => {
                 title: "",
                 location: "",
                 details: "",
-                time_stamp: "",
+                // time_stamp: "",
                 start_date: "",
                 end_date: "",
                 admin_id: props.userId
