@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { send } from 'emailjs-com';
 import API from '../../utils/API'
 
-function Email() {
+function Email({setEventId, eventId}) {
   const [toSend, setToSend] = useState({
     from_name: '',
     to_name: '',
@@ -14,10 +14,10 @@ function Email() {
 
 
 
-  useEffect( async () =>  {
-    const savedEvent = localStorage.getItem('eventID'); //pull from state
-    if (savedEvent) {
-    await  API.getOneEvent(savedEvent).then(eventData => {
+  useEffect(() =>  {
+
+      API.getOneEvent(eventId).then(eventData => {
+        console.log(eventId)
         const eventTitle = eventData.title;
         const eventDetails = eventData.details;
         const eventLocation = eventData.location;
@@ -26,8 +26,8 @@ function Email() {
       }).catch(err => {
         console.log(err)
       })
-    }
-  }, [])
+    
+  }, [eventId])
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -39,6 +39,7 @@ function Email() {
     )
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
+        //put api post request here
       })
       .catch((err) => {
         console.log('FAILED...', err);
