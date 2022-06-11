@@ -74,15 +74,29 @@ const CurrentEvent = ({name, eventId,isLoggedIn}) => {
     return (
         <>
           <Box 
-            
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 3,
+            }}
             id="eventInfoSection"
           >
-              <Box sx={{ width: '100%' }}>
+              <Box
+                sx={{
+                  width: '100%',
+                  borderRadius:5,
+                  margin:2,
+                  boxShadow:3,
+                }}> 
                   <Stack spacing={2}>
                       <Item><h2>Title</h2>{oneEventData.title}</Item>
                   </Stack>
               </Box>
-              <Box sx={{ flexGrow: 1 }}>
+              <Box 
+                sx={{ 
+                  flexGrow: 1,
+
+                }}>
                   <Grid container spacing={3}>
                       <Grid item xs={4}>
                           <Item>Start Date: {oneEventData.start_date}</Item>
