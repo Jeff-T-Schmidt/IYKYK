@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
-import { Paper} from '@mui/material';
+import { Paper } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import { useNavigate } from 'react-router-dom'
@@ -73,8 +73,10 @@ const CurrentEvent = ({ name, eventId, isLoggedIn }) => {
 
     return (
         <>
-<<<<<<< HEAD
-            <div id="eventInfoSection">
+            <Box
+
+                id="eventInfoSection"
+            >
                 <Box sx={{ width: '100%' }}>
                     <Stack spacing={2}>
                         <Item><h2>Title</h2>{oneEventData.title}</Item>
@@ -94,35 +96,8 @@ const CurrentEvent = ({ name, eventId, isLoggedIn }) => {
                     </Grid>
                 </Box>
                 <SimpleAccordion oneEventData={oneEventData} setOneEventData={setOneEventData} />
-            </div>
+            </Box>
             {/* <div id="groupChat">
-=======
-          <Box 
-            
-            id="eventInfoSection"
-          >
-              <Box sx={{ width: '100%' }}>
-                  <Stack spacing={2}>
-                      <Item><h2>Title</h2>{oneEventData.title}</Item>
-                  </Stack>
-              </Box>
-              <Box sx={{ flexGrow: 1 }}>
-                  <Grid container spacing={3}>
-                      <Grid item xs={4}>
-                          <Item>Start Date: {oneEventData.start_date}</Item>
-                      </Grid>
-                      <Grid item xs={4}>
-                          <Item>End Date: {oneEventData.end_date}</Item>
-                      </Grid>
-                      <Grid item xs={4}>
-                          <Item>Location: {oneEventData.location}</Item>
-                      </Grid>
-                  </Grid>
-              </Box>
-              <SimpleAccordion oneEventData = {oneEventData} setOneEventData={setOneEventData}/>
-          </Box>
-          {/* <div id="groupChat">
->>>>>>> dev
 
           </div>
           <div id="newPostCarousel">
@@ -137,24 +112,25 @@ const CurrentEvent = ({ name, eventId, isLoggedIn }) => {
               setUsername(event.target.value);
             }}
           /> */}
-<<<<<<< HEAD
                 <div className="chat-body">
                     <ScrollToBottom className="message-container">
-                        {messageList.map((messageContent) => {
-                            return (
-                                <div
-                                    className="message"
-                                    id={name === messageContent.author ? "you" : "other"}
-                                >
-                                    <div className="message-content">
-                                        <p>{messageContent.message}</p>
+                        {
+                            messageList.map((messageContent) => {
+                                return (
+                                    <div
+                                        className="message"
+                                        id={name === messageContent.author ? "you" : "other"}
+                                    >
+                                        <div className="message-content">
+                                            <p>{messageContent.message}</p>
+                                        </div>
+                                        <div className="message-meta">
+                                            <p id="time">{messageContent.time}</p>
+                                            <p id="author">{messageContent.author}</p>
+                                        </div>
                                     </div>
-                                    <div className="message-meta">
-                                        <p id="time">{messageContent.time}</p>
-                                        <p id="author">{messageContent.author}</p>
-                                    </div>
-                                </div>)
-                        })
+                                )
+                            })
                         }
                     </ScrollToBottom>
                 </div>
@@ -170,48 +146,9 @@ const CurrentEvent = ({ name, eventId, isLoggedIn }) => {
                             event.key === "Enter" && sendMessage();
                         }}
                     />
-                    <button onClick={sendMessage}>&#9658;</button>
+                    <Button type='submit' variant='contained' onClick={sendMessage}>&#9658;</Button>
                 </div>
             </div>
-=======
-        <div className="chat-body">
-          <ScrollToBottom className="message-container">
-            {
-              messageList.map((messageContent) => {
-                return(
-                  <div
-                    className="message"
-                    id={name === messageContent.author ? "you" : "other"}
-                  >
-                    <div className="message-content">
-                      <p>{messageContent.message}</p>
-                    </div>
-                    <div className="message-meta">
-                      <p id="time">{messageContent.time}</p>
-                      <p id="author">{messageContent.author}</p>
-                    </div>
-                  </div>
-                )
-              }) 
-            }
-          </ScrollToBottom>
-        </div>  
-        <div className="chat-footer">
-          <input
-            type="text"
-            value={currentMessage}
-            placeholder="Hey..."
-            onChange={(event) => {
-              setCurrentMessage(event.target.value);
-            }}
-            onKeyPress={(event) => {
-              event.key === "Enter" && sendMessage();
-            }}
-          />
-          <Button type='submit' variant='contained' onClick={sendMessage}>&#9658;</Button>
-        </div> 
-      </div>
->>>>>>> dev
 
         </>
     )
