@@ -16,13 +16,24 @@ const Footer = () => {
 				</div>
 				<footer id="footer">
 					<Link to={-1}>
-					<Button className="btn1"  size="large" variant="contained"sx={{color: 'yellow', backgroundColor: 'orange',"&:hover": { backgroundColor: 'orange' },marginLeft: "22%", marginTop: "1%"}}>
-						<KeyboardBackspaceIcon></KeyboardBackspaceIcon>
-					</Button>
+						<Button 
+							className="btn1"  
+							size="large" 
+							variant="contained"
+							sx={{
+								color: 'yellow', 
+								backgroundColor: 'orange',"&:hover": { 
+									backgroundColor: 'orange' 
+								},
+								marginLeft: "5%", 
+								marginTop: "3%"
+							}}>
+							<KeyboardBackspaceIcon></KeyboardBackspaceIcon>
+						</Button>
 					</Link>
-					<Button className="btn2" size="large" variant="contained" sx={{color: 'yellow', backgroundColor: 'orange',"&:hover": { backgroundColor: 'orange' }, marginTop: "1%", marginLeft: "50%" }}>
+					{/* <Button className="btn2" size="large" variant="contained" sx={{color: 'yellow', backgroundColor: 'orange',"&:hover": { backgroundColor: 'orange' }, marginTop: "1%", marginLeft: "50%" }}>
 						<PriorityHighIcon></PriorityHighIcon>
-					</Button>
+					</Button> */}
 				</footer>
 			</div>
 		</>

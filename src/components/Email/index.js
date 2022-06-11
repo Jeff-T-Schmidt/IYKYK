@@ -2,32 +2,35 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { send } from 'emailjs-com';
 import API from '../../utils/API'
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
-function Email() {
+function Email({setEventId, eventId, token}) {
   const [toSend, setToSend] = useState({
     from_name: '',
     to_name: '',
     location: '',
     details: '',
-    title: ''
+    title: '',
+    reply_to: ''
   });
 
+  useEffect(() =>  {
 
+      API.getOneEvent(eventId).then(eventData => {
+        console.log(eventId)
+        const eventTitle = eventData.title;
+        const eventDetails = eventData.details;
+        const eventLocation = eventData.location;
+        setToSend({ ...toSend, title: eventTitle, details: eventDetails, location: eventLocation })
 
-  useEffect(() => {
-    const savedEvent = localStorage.getItem('eventID');
-    if (savedEvent) {
-  API.getOneEvent(savedEvent).then(eventData => {
-    const eventTitle = eventData.title;
-    const eventDetails = eventData.details;
-    const eventLocation = eventData.location;
-    setToSend({...toSend, title: eventTitle, details: eventDetails, location: eventLocation})
-
-  }).catch(err => {
-    console.log(err)
-  })
-}
-},[])
+      }).catch(err => {
+        console.log(err)
+      })
     
       const onSubmit = (e) => {
         e.preventDefault();
@@ -50,26 +53,49 @@ function Email() {
       };
     return (
         <>
-            <div className="Email">
+            <Card 
+              sx={{
+                margin: 4,
+                borderRadius: 5,
+              }}
+              className="Email"
+            >
                 <form onSubmit={onSubmit}>
-                    <input
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      gap: 3,
+                      margin: 4
+                    }}
+                  >
+
+                    <TextField
+                        id="standard-textarea"
                         type='text'
                         name='from_name'
-                        placeholder='from'
+                        placeholder='From'
+                        label='From'
+                        variant="standard"
                         value={toSend.from_name}
                         onChange={handleChange}
                     />
-                    <input
+                    <TextField
+                        id="standard-textarea"
+                        variant="standard"
                         type='text'
                         name='to_name'
-                        placeholder='to'
+                        placeholder='To'
+                        label='To'
                         value={toSend.to_name}
                         onChange={handleChange}
                     />
-                    <input
+                    <TextField
+                        id="standard-textarea"
+                        variant="standard"
                         type='text'
                         name='reply_to'
-                        placeholder='recipient address'
+                        placeholder='Recipient Email'
+                        label='Recipient Email'
                         value={toSend.reply_to}
                         onChange={handleChange}
                     />
@@ -91,11 +117,13 @@ function Email() {
                         value={toSend.title}
                         onChange={handleChange}
                     />
-                    <button type='submit'>Invite</button>
+                    <Button type='submit' variant="contained">Invite</Button>
+                  </Box>
                 </form>
-            </div>
+            </Card>
         </>
     );
-}
+  }
+)}
 
 export default Email;
