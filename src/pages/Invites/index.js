@@ -11,12 +11,6 @@ const MyInvites = (props) => {
         }
     })
 
-    // useEffect(() => {
-    //     const currentEvent = localStorage.getItem("eventID");
-    //     if (currentEvent) {
-    //         setToken(savedToken)
-    //     }
-    // }, [])
     return (
         <>
             <div className='flex-container'>

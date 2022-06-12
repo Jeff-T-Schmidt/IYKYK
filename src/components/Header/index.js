@@ -9,6 +9,7 @@ export default function Header(props) {
   // console.log(props)
   return (
     <AppBar position="static" style={{ background: '#4285F4' }}>
+      <h1> Welcome {props.name}! </h1>
       <Link to='/'>
       {props.isLoggedIn?(
             <>
@@ -19,7 +20,7 @@ export default function Header(props) {
                 >
                   Logout
                 </Button>
-            <h1> Welcome {props.name}! </h1>
+            
             </>
         ):(
             <>

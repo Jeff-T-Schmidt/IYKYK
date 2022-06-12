@@ -18,6 +18,7 @@ const Home = (props) => {
             setToken(savedToken)
         }
         API.getOneUser(props.userId).then(data=> {
+            console.log(data)
             setEventData(data.events)
         })
         API.getAdminEvents(props.userId).then(data=> {
@@ -57,7 +58,7 @@ const Home = (props) => {
                 </div>
             </div>
             {eventData && <div id="homeContainer" sx={{ display: 'flex', justifyContent: 'center',}}>
-                <EventCard userEvents={eventData} setEventId={props.setEventId} adminEvents={adminEventData} setAdminEventData={props.setAdminEventData} allUserEvents={eventData.concat(adminEventData)}/>
+                <EventCard setEventId={props.setEventId} allUserEvents={eventData.concat(adminEventData)}/>
             </div>}
 
                 
