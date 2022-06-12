@@ -39,7 +39,7 @@ const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
                 admin_id: userId
             })
             if (data) {
-                console.log(data.id)
+
                 setEventId(data.id)
             }
         })

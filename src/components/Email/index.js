@@ -22,7 +22,6 @@ function Email({ setEventId, eventId, token }) {
   useEffect(() => {
 
     API.getOneEvent(eventId).then(eventData => {
-      console.log(eventId)
       const eventTitle = eventData.title;
       const eventDetails = eventData.details;
       const eventLocation = eventData.location;
