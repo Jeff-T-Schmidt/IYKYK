@@ -13,6 +13,7 @@ import API from "./utils/API"
 import { useEffect, useState } from "react";
 import SignUp from './pages/Signup/index.js'
 import CurrentEvent from './pages/Events/CurrentEvent/index.js'
+import InviteAttendees from './pages/InvitedAttendees'
 
 
 
@@ -83,6 +84,7 @@ function App() {
         <Route path='/profile' element={<Profile userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/myinvites' element={<MyInvites userId={userId} isLoggedIn={isLoggedIn} token={token}  eventId={eventId} setEventId={setEventId}/>} />
         <Route path='/currentEvent' element={<CurrentEvent name ={name} userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId}/>} />
+        <Route path='/inviteAttendees' element={<InviteAttendees name ={name} userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId}token={token}/>} />
       </Routes>
       <Footer />
     </>

@@ -8,8 +8,10 @@ import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import { useNavigate}  from 'react-router-dom'
 
 function Email({ setEventId, eventId, token }) {
+  const navigate = useNavigate()
   const [toSend, setToSend] = useState({
     from_name: '',
     to_name: '',
@@ -50,9 +52,10 @@ function Email({ setEventId, eventId, token }) {
         }
         API.createAttendee(atData, token).then(res => {
           if (res) {
-            alert(`${atData.invited_email} has been invited to your event`)
+            alert(`${atData.invited_email} has been invited to your event, click Ok to add more invitees.`);       
           }
         })
+       
       })
       .catch((err) => {
         console.log('FAILED...', err);
@@ -129,6 +132,7 @@ function Email({ setEventId, eventId, token }) {
               onChange={handleChange}
             />
             <Button type='submit' variant="contained">Invite</Button>
+            <Button onClick={() => navigate('/home')} variant="contained">Done</Button>
           </Box>
         </form>
       </Card>

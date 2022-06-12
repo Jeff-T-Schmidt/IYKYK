@@ -1,4 +1,3 @@
-import Email from '../../components/Email';
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
@@ -39,7 +38,7 @@ const MyInvites = (props) => {
                 </div>
             </div>
             <div></div>
-            <Email eventId={props.eventId} token={props.token} />
+            
         </>
     )
 }
