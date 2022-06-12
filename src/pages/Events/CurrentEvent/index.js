@@ -75,27 +75,29 @@ const CurrentEvent = ({name, eventId,isLoggedIn}) => {
         <>
           <Box 
             sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 3,
+              flexGrow: 1,
+              margin:2,            
             }}
             id="eventInfoSection"
           >
-              <Box
-                sx={{
-                  width: '100%',
-                  borderRadius:5,
-                  margin:2,
-                  boxShadow:3,
-                }}> 
-                  <Stack spacing={2}>
-                      <Item><h2>Title</h2>{oneEventData.title}</Item>
+              <Box> 
+                  <Stack 
+                    sx={{
+                      borderRadius:15,
+                      boxShadow:3,
+                      marginBottom:1,
+                    }}
+                    spacing={3}
+                  >
+                      <Item><h2>{oneEventData.title}</h2></Item>
                   </Stack>
               </Box>
+
               <Box 
                 sx={{ 
                   flexGrow: 1,
-
+                  marginTop: 1,
+                  marginBottom:1,
                 }}>
                   <Grid container spacing={3}>
                       <Grid item xs={4}>
@@ -109,7 +111,14 @@ const CurrentEvent = ({name, eventId,isLoggedIn}) => {
                       </Grid>
                   </Grid>
               </Box>
-              <SimpleAccordion oneEventData = {oneEventData} setOneEventData={setOneEventData}/>
+              <SimpleAccordion 
+                 sx={{ 
+                  flexGrow: 1,
+                  margin:2,
+                }}
+                oneEventData = {oneEventData} 
+                setOneEventData={setOneEventData}
+              />
           </Box>
           {/* <div id="groupChat">
 
@@ -118,7 +127,12 @@ const CurrentEvent = ({name, eventId,isLoggedIn}) => {
               <PostCarousel />
           </div> */}
 
-         <div className='chat-box'>
+         <Box 
+          sx={{
+            margin: 2,
+          }}
+          className='chat-box'
+         >
          {/* <input className='nameInput'
             type="text"
             placeholder="John..."
@@ -126,43 +140,60 @@ const CurrentEvent = ({name, eventId,isLoggedIn}) => {
               setUsername(event.target.value);
             }}
           /> */}
-        <div className="chat-body">
-          <ScrollToBottom className="message-container">
-            {
-              messageList.map((messageContent) => {
-                return(
-                  <div
-                    className="message"
-                    id={name === messageContent.author ? "you" : "other"}
-                  >
-                    <div className="message-content">
-                      <p>{messageContent.message}</p>
+          <Box className="chat-body">
+            <ScrollToBottom className="message-container">
+              {
+                messageList.map((messageContent) => {
+                  return(
+                    <div
+                      className="message"
+                      id={name === messageContent.author ? "you" : "other"}
+                    >
+                      <div className="message-content">
+                        <p>{messageContent.message}</p>
+                      </div>
+                      <div className="message-meta">
+                        <p id="time">{messageContent.time}</p>
+                        <p id="author">{messageContent.author}</p>
+                      </div>
                     </div>
-                    <div className="message-meta">
-                      <p id="time">{messageContent.time}</p>
-                      <p id="author">{messageContent.author}</p>
-                    </div>
-                  </div>
-                )
-              }) 
-            }
-          </ScrollToBottom>
-        </div>  
-        <div className="chat-footer">
-          <input
-            type="text"
-            value={currentMessage}
-            placeholder="Hey..."
-            onChange={(event) => {
-              setCurrentMessage(event.target.value);
-            }}
-            onKeyPress={(event) => {
-              event.key === "Enter" && sendMessage();
-            }}
-          />
-          <Button type='submit' variant='contained' onClick={sendMessage}>&#9658;</Button>
-        </div> 
-      </div>
+                  )
+                }) 
+              }
+            </ScrollToBottom>
+          </Box>  
+          <Box className="chat-footer">
+            <TextField
+              sx={{
+                width:0.9,
+                height: 1,
+                padding: 0.2,
+                marginLeft: 2,
+                marginRight: 2,
+              }}
+              id="standard-textarea"
+              variant="standard"
+              type="text"
+              value={currentMessage}
+              placeholder="Hey..."
+              onChange={(event) => {
+                setCurrentMessage(event.target.value);
+              }}
+              onKeyPress={(event) => {
+                event.key === "Enter" && sendMessage();
+              }}
+            />
+            <Button 
+              sx={{
+                width: 0.5,
+              }}
+              id='chatFooterButton' 
+              type='submit' 
+              variant='contained'
+              onClick={sendMessage}
+            >&#9658;</Button>
+          </Box> 
+        </Box>
 
         </>
     )
