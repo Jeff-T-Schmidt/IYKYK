@@ -16,7 +16,6 @@ export default function Header(props) {
   return (
     <AppBar position="static" style={{ background: '#4285F4' }}>
       <Link to='/'>
-<<<<<<< HEAD
           <Box
             sx={{
               display: 'flex',
@@ -52,22 +51,6 @@ export default function Header(props) {
               ):(
                   <>
                       <Link to="/"><Button>Login/Signup</Button></Link> 
-=======
-      {props.isLoggedIn?(
-            <>
-                {/* <Link to={`/home`}><button>Home</button></Link> */}
-                <Button 
-                  
-                  onClick={props.logout}
-                >
-                  Logout
-                </Button>
-            <h1> Welcome {props.name}! </h1>
-            </>
-        ):(
-            <>
-                <Link to="/"><Button>Login/Signup</Button></Link> 
->>>>>>> dev
 
                   </>
               )}
