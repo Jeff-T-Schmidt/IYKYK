@@ -48,9 +48,6 @@ function App() {
       setUserId(null)
       setName(null)
     }
-    if(isLoggedIn) {
-
-    }
   }, [token])
 
   const handleLoginSubmit = loginData => {
