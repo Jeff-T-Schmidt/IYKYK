@@ -36,7 +36,6 @@ function App() {
           setUserId(userData.userId)
           API.getOneUser(userData.userId).then(data=>{
             setName(data.name)
-            console.log(data.name)
           })
         } else {
           setIsLoggedIn(false);

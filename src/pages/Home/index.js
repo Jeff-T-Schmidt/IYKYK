@@ -8,7 +8,9 @@ import './style.css'
 
 const Home = (props) => {
     const [eventData, setEventData] = useState();
+    const [adminEventData, setAdminEventData] = useState();
     const [token, setToken] = useState(null)
+
     const navigate = useNavigate();
     useEffect(() => {
         const savedToken = localStorage.getItem("token");
@@ -17,6 +19,10 @@ const Home = (props) => {
         }
         API.getOneUser(props.userId).then(data=> {
             setEventData(data.events)
+        })
+        API.getAdminEvents(props.userId).then(data=> {
+            console.log(...data)
+            setAdminEventData(data)
         })
     }, [])
     useEffect(() => {
@@ -51,7 +57,7 @@ const Home = (props) => {
                 </div>
             </div>
             {eventData && <div id="homeContainer" sx={{ display: 'flex', justifyContent: 'center',}}>
-                <EventCard userEvents={eventData} setEventId={props.setEventId}/>
+                <EventCard userEvents={eventData} setEventId={props.setEventId} adminEvents={adminEventData} setAdminEventData={props.setAdminEventData} allUserEvents={eventData.concat(adminEventData)}/>
             </div>}
 
                 

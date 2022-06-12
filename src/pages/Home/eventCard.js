@@ -7,8 +7,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { flexbox } from '@mui/system';
 
 
-const EventCard = ({userEvents, setEventId}) => {
-  
+const EventCard = ({userEvents, setEventId, adminEvents, allUserEvents }) => {
 
   const navigate = useNavigate();
   
@@ -22,9 +21,9 @@ const EventCard = ({userEvents, setEventId}) => {
   return (
     <div id="popContainer">
       {
-        userEvents.map((userEvents) => (
-          <div  className="eventCard" key={userEvents.id} onClick={ () => {
-              handleClick(userEvents.id)
+        allUserEvents.map((allUserEvents) => (
+          <div  className="eventCard" key={allUserEvents.id} onClick={ () => {
+              handleClick(allUserEvents.id)
           }}>
 
             <Card 
@@ -34,7 +33,7 @@ const EventCard = ({userEvents, setEventId}) => {
                   boxShadow: 3,
 
                 }} 
-                id={`${userEvents.id}`}
+                id={`${allUserEvents.id}`}
               >
               <Link to="/currentevent"/>
               <CardActionArea  >
@@ -49,7 +48,7 @@ const EventCard = ({userEvents, setEventId}) => {
                       }}
                       gutterBottom variant="h4" 
                       component="div">
-                      {userEvents.title}
+                      {allUserEvents.title}
                     </Typography>
                     <CardContent 
                       sx={{
@@ -61,10 +60,10 @@ const EventCard = ({userEvents, setEventId}) => {
                       <Typography 
                         gutterBottom variant="overline" 
                         component="div">
-                        {userEvents.start_date}
+                        {allUserEvents.start_date}
                       </Typography>
                       <Typography gutterBottom variant="overline" component="div">
-                        {userEvents.location}
+                        {allUserEvents.location}
                       </Typography>
                     </CardContent>
                   </CardContent>
@@ -76,14 +75,13 @@ const EventCard = ({userEvents, setEventId}) => {
                     }}
                     variant="body2" 
                     color="text.secondary">
-                    {userEvents.details}
+                    {allUserEvents.details}
                   </Typography>
                 </CardContent>
               </CardActionArea>
             </Card>
           </div>
-        ))
-      } 
+        ))}
     </div>
   );
 };
