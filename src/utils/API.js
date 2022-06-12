@@ -1,7 +1,7 @@
 //DEVELOP
-// const BASE_URL="http://localhost:3001"
+const BASE_URL="http://localhost:3001"
 //PROD
-const BASE_URL="https://iykyk-backend.herokuapp.com"
+// const BASE_URL="https://iykyk-backend.herokuapp.com"
 
 module.exports = {
     getAllUsers:()=>{
@@ -9,6 +9,9 @@ module.exports = {
     },
     getOneUser:userId=>{
         return fetch(`${BASE_URL}/api/users/${userId}`).then(res=>res.json())
+    },
+    getAdminEvents:userId=>{
+        return fetch(`${BASE_URL}/api/events/admin/${userId}`).then(res=>res.json())
     },
     verify:token=>{
         return fetch(`${BASE_URL}/api/users/verifyToken`,{

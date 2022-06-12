@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
-import { Paper} from '@mui/material';
+import { Paper } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import { useNavigate } from 'react-router-dom'
@@ -27,34 +27,34 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-const CurrentEvent = ({name, eventId,isLoggedIn}) => {
+const CurrentEvent = ({ name, eventId, isLoggedIn }) => {
     console.log(name)
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
     // const [username, setUsername] = useState(name);
-    const [oneEventData,setOneEventData] = useState({
+    const [oneEventData, setOneEventData] = useState({
     })
-    useEffect(()=>{
-        API.getOneEvent(eventId).then(data =>{
+    useEffect(() => {
+        API.getOneEvent(eventId).then(data => {
             console.log(data)
             setOneEventData(data)
         })
-    },[])
+    }, [])
     const navigate = useNavigate()
-    useEffect(()=>{
-        if(!isLoggedIn){
-          navigate("/")
-         }
-       })
+    useEffect(() => {
+        if (!isLoggedIn) {
+            navigate("/")
+        }
+    })
     const sendMessage = async () => {
         if (currentMessage !== "") {
             const messageData = {
-              author: name,
-              message: currentMessage,
-              time:
-                new Date(Date.now()).getHours() +
-                ":" +
-                new Date(Date.now()).getMinutes(),
+                author: name,
+                message: currentMessage,
+                time:
+                    new Date(Date.now()).getHours() +
+                    ":" +
+                    new Date(Date.now()).getMinutes(),
 
             };
 
