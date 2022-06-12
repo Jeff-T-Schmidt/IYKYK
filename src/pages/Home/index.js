@@ -17,9 +17,12 @@ const Home = (props) => {
         if (savedToken) {
             setToken(savedToken)
         }
+        
         API.getOneUser(props.userId).then(data=> {
             setEventData(data.events)
+            //is getting attendee info
         })
+        
         API.getAdminEvents(props.userId).then(data=> {
             console.log(...data)
             setAdminEventData(data)

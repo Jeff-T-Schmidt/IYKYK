@@ -46,7 +46,7 @@ const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
                 setEventId(data.id)
             }
         })
-        navigate("/myinvites")
+        navigate("/inviteattendees")
     };
 
     return (
