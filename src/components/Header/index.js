@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 
 
 export default function Header(props) {
+  // console.log(props)
   return (
     <AppBar position="static" style={{ background: '#4285F4' }}>
       <Link to='/'>
@@ -18,6 +19,7 @@ export default function Header(props) {
                 >
                   Logout
                 </Button>
+            <h1> Welcome {props.name}! </h1>
             </>
         ):(
             <>

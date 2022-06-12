@@ -49,6 +49,7 @@ function App() {
       setName(null)
     }
   }, [token])
+  
 
   const handleLoginSubmit = loginData => {
     API.login(loginData).then(data => {
@@ -72,13 +73,13 @@ function App() {
   }
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} userId={userId} logout={logout} />
+      <Header isLoggedIn={isLoggedIn} userId={userId} logout={logout} name={name} />
       <Routes>
         <Route path='/login' element={<Login login={handleLoginSubmit} userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/signup' element={<SignUp signup={handleSignupSubmit} userId={userId} isLoggedIn={isLoggedIn} />} />
         <Route path='/' element={<Landing userId={userId} isLoggedIn={isLoggedIn}/>} />
-        <Route path='/home' element={<Home userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId}/>} />
-        <Route path='/newEvent' element={<NewEvent userId={userId} token={token} isLoggedIn={isLoggedIn}eventId={eventId} setEventId={setEventId}/>} />
+        <Route path='/home' element={<Home userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId} />} />
+        <Route path='/newEvent' element={<NewEvent userId={userId} token={token} isLoggedIn={isLoggedIn}eventId={eventId} setEventId={setEventId} />} />
         <Route path='/profile' element={<Profile userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/myinvites' element={<MyInvites userId={userId} isLoggedIn={isLoggedIn} token={token}  eventId={eventId} setEventId={setEventId}/>} />
         <Route path='/currentEvent' element={<CurrentEvent name ={name} userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId}/>} />
