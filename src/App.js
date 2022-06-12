@@ -34,7 +34,9 @@ function App() {
         if (userData.userId) {
           setIsLoggedIn(true);
           setUserId(userData.userId)
-          setName(userData.name)
+          API.getOneUser(userData.userId).then(data=>{
+            setName(data.name)
+          })
         } else {
           setIsLoggedIn(false);
           setUserId(null)
@@ -47,12 +49,6 @@ function App() {
       setName(null)
     }
   }, [token])
-  
-  useEffect(()=>{
-    API.getOneUser(userId).then(data=>{
-      setName(data.name)
-    })
-  },[])
 
   const handleLoginSubmit = loginData => {
     API.login(loginData).then(data => {

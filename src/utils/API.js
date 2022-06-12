@@ -10,6 +10,9 @@ module.exports = {
     getOneUser:userId=>{
         return fetch(`${BASE_URL}/api/users/${userId}`).then(res=>res.json())
     },
+    getAdminEvents:userId=>{
+        return fetch(`${BASE_URL}/api/events/admin/${userId}`).then(res=>res.json())
+    },
     verify:token=>{
         return fetch(`${BASE_URL}/api/users/verifyToken`,{
             headers:{
