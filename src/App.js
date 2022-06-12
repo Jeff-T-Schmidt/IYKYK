@@ -86,7 +86,6 @@ function App() {
         <Route path='/currentEvent' element={<CurrentEvent name ={name} userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId}/>} />
         <Route path='/inviteAttendees' element={<InviteAttendees name ={name} userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId}token={token}/>} />
       </Routes>
-      <Footer />
     </>
   );
 }
