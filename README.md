@@ -33,7 +33,13 @@
 ---
 # Usage
 
-
+Once the project has been installed:
+1. Be sure to follow the directions of the backend README [backend README](https://github.com/Jeff-T-Schmidt/IYKYK-backend).
+2. Once you have setup the backend, you can open IYKYK in your terminal and enter:
+```
+npm start
+```
+3. Enjoy!
 
 &nbsp;
 ---
@@ -61,9 +67,28 @@ NPM Packages
 ---
 # Demo
 
+## Login / Account Creation
+![login and account creation](./public/GIFScreenShot/IYKYKloginsignup.gif)
+
+## Creating an event
+
+![event creation](./public/GIFScreenShot/IYKYKcreateevent.gif)
+
+## Checking your events
+
+![checking an event](./public/GIFScreenShot/IYKYKcurrentevent.gif)
+
+## Accepting an invitation
+
+![accept an invitation](./public/GIFScreenShot/IYKYKacceptinvitation.gif)
+
 &nbsp;
 ---
 # Screenshots
+
+## Wireframe / Mockup
+
+![mockup of our app](./public/GIFScreenShot/iykykmockup.PNG)
 
 &nbsp;
 ---
