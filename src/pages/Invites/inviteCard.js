@@ -32,6 +32,7 @@ const InviteCard = (props) => {
 
     const handleClick = (id) => {
         props.setEventId(id)
+        alert('This Event has been added!')
     }
 
     // create button
@@ -95,7 +96,7 @@ const InviteCard = (props) => {
                                         color="text.secondary">
                                         {allEventData.details}
                                     </Typography>
-                                    <Button onClick={()=> handleClick(allEventData.id)} variant="contained">Going?</Button>
+                                    <Button onClick={()=> handleClick(allEventData.id)} variant="contained">Accept</Button>
                                 </CardContent>
                             </CardActionArea>
                         </Card>
