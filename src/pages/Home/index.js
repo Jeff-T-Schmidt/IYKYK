@@ -7,31 +7,14 @@ import { useEffect, useState } from "react";
 import './style.css'
 
 const Home = (props) => {
-    const [eventData, setEventData] = useState();
-    const [adminEventData, setAdminEventData] = useState();
-    const [token, setToken] = useState(null)
-
     const navigate = useNavigate();
-    useEffect(() => {
-        const savedToken = localStorage.getItem("token");
-        if (savedToken) {
-            setToken(savedToken)
-        }
-        API.getOneUser(props.userId).then(data=> {
-            console.log(data)
-            setEventData(data.events)
-        })
-        API.getAdminEvents(props.userId).then(data=> {
-            console.log(...data)
-            setAdminEventData(data)
-        })
-    }, [])
+    const allUserEvents = props.eventData.concat(props.adminEventData);
+
     useEffect(() => {
         if (!props.isLoggedIn) {
             navigate('/')
         }
-    }
-    )
+    })
 
 
     return (
@@ -57,8 +40,8 @@ const Home = (props) => {
                     </div>
                 </div>
             </div>
-            {eventData && <div id="homeContainer" sx={{ display: 'flex', justifyContent: 'center',}}>
-                <EventCard setEventId={props.setEventId} allUserEvents={eventData.concat(adminEventData)}/>
+            { <div id="homeContainer" sx={{ display: 'flex', justifyContent: 'center',}}>
+                <EventCard allUserEvents={allUserEvents}/>
             </div>}
 
                 

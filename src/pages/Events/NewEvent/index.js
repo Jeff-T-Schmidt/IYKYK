@@ -9,6 +9,9 @@ import { positions } from '@mui/system';
 import { CardActionArea } from '@mui/material';
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import API from "../../../utils/API"
+import { alpha } from "@mui/material";
+
+
 
 const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
     const navigate = useNavigate()
@@ -43,7 +46,7 @@ const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
                 setEventId(data.id)
             }
         })
-        navigate("/myinvites")
+        navigate("/inviteattendees")
     };
 
     return (
@@ -75,6 +78,7 @@ const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
                     sx={{
                         margin: 4,
                         borderRadius: 5,
+                        backgroundColor: 'rgba(255,255,255, 0.8)',
                     }}
                 >
 
@@ -83,6 +87,7 @@ const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
                             display: 'flex',
                             flexDirection: 'row',
                             justifyContent: 'space-evenly',
+                            
                         }}
                         id="dateContainer"
                     >
@@ -134,6 +139,8 @@ const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
                         display: 'flex',
                         flexDirection: 'column',
                         borderRadius: 5,
+                        backgroundColor: 'rgba(255,255,255, 0.8)',
+                        color: 'white',
                     }}
                     right
                 >
@@ -143,6 +150,7 @@ const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
                             flexDirection:"row",
                             justifyContent: "flex-start",
                             gap: 10,
+                            color: 'white',
                         }}
                     >
                         <CardContent 
@@ -154,6 +162,7 @@ const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
                             <TextField
                                 sx={{
                                     width: 1,
+                                    color: 'white',
                                 }}
                                 id="standard-textarea"
                                 label="Title"
