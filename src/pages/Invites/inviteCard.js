@@ -6,6 +6,8 @@ import { CardActionArea, Button } from '@mui/material';
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { flexbox } from '@mui/system';
 import API from "../../utils/API";
+import './style.css'
+
 
 
 const InviteCard = (props) => {
@@ -55,7 +57,7 @@ const InviteCard = (props) => {
                             id={`${allEventData.id}`}
                         >
                             <Link to="/currentevent" />
-                            <CardActionArea  >
+                            <CardActionArea >
                                 <CardContent >
                                     <CardContent
 

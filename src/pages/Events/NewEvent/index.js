@@ -152,6 +152,7 @@ const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
                             gap: 10,
                             color: 'white',
                         }}
+                        id="eventDetailCard"
                     >
                         <CardContent 
                             sx={{

@@ -9,6 +9,8 @@ import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { useNavigate}  from 'react-router-dom'
+import './style.css'
+
 
 function Email({ setEventId, eventId, token }) {
   const navigate = useNavigate()
