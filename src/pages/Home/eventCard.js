@@ -7,7 +7,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { flexbox } from '@mui/system';
 
 
-const EventCard = ({userEvents, setEventId, adminEvents, allUserEvents }) => {
+const EventCard = ({setEventId, allUserEvents }) => {
 
   const navigate = useNavigate();
   

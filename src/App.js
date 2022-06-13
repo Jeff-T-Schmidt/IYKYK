@@ -19,9 +19,16 @@ import CurrentEvent from './pages/Events/CurrentEvent/index.js'
 function App() {
   const [eventId, setEventId] = useState("");
   const [name,setName]= useState("")
+  const [email,setEmail]= useState("")
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState(null);
-  const [token, setToken] = useState(null)
+  const [token, setToken] = useState(null);
+  const [eventData, setEventData] = useState([]);
+  const [adminEventData, setAdminEventData] = useState([]);
+  const [allEventData, setAllEventData] = useState([])
+
+
+
   useEffect(() => {
     const savedToken = localStorage.getItem("token");
     if (savedToken) {
@@ -36,7 +43,15 @@ function App() {
           setUserId(userData.userId)
           API.getOneUser(userData.userId).then(data=>{
             setName(data.name)
+            setEmail(data.email)
+            setEventData(data.events)
           })
+          API.getAdminEvents(userData.userId).then(data=> {
+            setAdminEventData(data)
+          })
+          API.getAllEvents().then(data => {
+            setAllEventData(data)
+        })
         } else {
           setIsLoggedIn(false);
           setUserId(null)
@@ -49,7 +64,7 @@ function App() {
       setName(null)
     }
   }, [token])
-
+  
   const handleLoginSubmit = loginData => {
     API.login(loginData).then(data => {
       if (data) {
@@ -77,10 +92,10 @@ function App() {
         <Route path='/login' element={<Login login={handleLoginSubmit} userId={userId} isLoggedIn={isLoggedIn}/>} />
         <Route path='/signup' element={<SignUp signup={handleSignupSubmit} userId={userId} isLoggedIn={isLoggedIn} />} />
         <Route path='/' element={<Landing userId={userId} isLoggedIn={isLoggedIn}/>} />
-        <Route path='/home' element={<Home userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId}/>} />
+        <Route path='/home' element={<Home userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId} eventData={eventData} adminEventData={adminEventData}/>} />
         <Route path='/newEvent' element={<NewEvent userId={userId} token={token} isLoggedIn={isLoggedIn}eventId={eventId} setEventId={setEventId}/>} />
         <Route path='/profile' element={<Profile userId={userId} isLoggedIn={isLoggedIn}/>} />
-        <Route path='/myinvites' element={<MyInvites userId={userId} isLoggedIn={isLoggedIn} token={token}  eventId={eventId} setEventId={setEventId}/>} />
+        <Route path='/myinvites' element={<MyInvites userId={userId} email={email} isLoggedIn={isLoggedIn} token={token}  eventId={eventId} setEventId={setEventId} allEventData={allEventData}/>} />
         <Route path='/currentEvent' element={<CurrentEvent name ={name} userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId}/>} />
       </Routes>
       <Footer />

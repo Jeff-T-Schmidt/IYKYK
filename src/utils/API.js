@@ -1,7 +1,7 @@
 //DEVELOP
-// const BASE_URL="http://localhost:3001"
+const BASE_URL="http://localhost:3001"
 //PROD
-const BASE_URL="https://iykyk-backend.herokuapp.com"
+// const BASE_URL="https://iykyk-backend.herokuapp.com"
 
 module.exports = {
     getAllUsers:()=>{
@@ -47,6 +47,9 @@ module.exports = {
     //         }
     //     }).then(res=>res.json())
     // },
+    getAllEvents:()=>{
+        return fetch(`${BASE_URL}/api/events`).then(res=>res.json())
+    },
 
     getOneEvent:(eventId)=>{
         return fetch(`${BASE_URL}/api/events/${eventId}`).then(res=>res.json())
