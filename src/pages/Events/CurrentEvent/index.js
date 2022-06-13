@@ -16,7 +16,7 @@ import { io } from "socket.io-client";
 import './style.css'
 import API from '../../../utils/API.js';
 
-const socket = io("http://localhost:3002", {
+const socket = io("https://iykyk-backend.herokuapp.com", {
     transports: ['websocket'],
 })
 const Item = styled(Paper)(({ theme }) => ({
