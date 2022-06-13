@@ -89,7 +89,7 @@ const CurrentEvent = ({ name, eventId, isLoggedIn }) => {
                     }}
                     spacing={3}
                   >
-                      <Item><h2>{oneEventData.title}</h2></Item>
+                      <Item sx={{ backgroundColor: 'rgba(255,255,255, 0.8)',}}><h2>{oneEventData.title}</h2></Item>
                   </Stack>
               </Box>
 
@@ -101,20 +101,22 @@ const CurrentEvent = ({ name, eventId, isLoggedIn }) => {
                 }}>
                   <Grid container spacing={3}>
                       <Grid item xs={4}>
-                          <Item>Start Date: {oneEventData.start_date}</Item>
+                          <Item sx={{ backgroundColor: 'rgba(255,255,255, 0.8)',}}>Start Date: {oneEventData.start_date}</Item>
                       </Grid>
                       <Grid item xs={4}>
-                          <Item>End Date: {oneEventData.end_date}</Item>
+                          <Item sx={{ backgroundColor: 'rgba(255,255,255, 0.8)'}}>End Date: {oneEventData.end_date}</Item>
                       </Grid>
                       <Grid item xs={4}>
-                          <Item>Location: {oneEventData.location}</Item>
+                          <Item sx={{ backgroundColor: 'rgba(255,255,255, 0.8)'}}>Location: {oneEventData.location}</Item>
                       </Grid>
                   </Grid>
               </Box>
               <SimpleAccordion 
-                 sx={{ 
+                id="accordionThing"
+                sx={{ 
                   flexGrow: 1,
                   margin:2,
+                  backgroundColor: 'rgba(255,255,255, 0.8)',
                 }}
                 oneEventData = {oneEventData} 
                 setOneEventData={setOneEventData}
@@ -127,13 +129,14 @@ const CurrentEvent = ({ name, eventId, isLoggedIn }) => {
               <PostCarousel />
           </div> */}
 
-         <Box 
+        <Box 
           sx={{
             margin: 2,
+            backgroundColor: 'rgba(255,255,255, 0.8)',
           }}
           className='chat-box'
-         >
-         {/* <input className='nameInput'
+        >
+        {/* <input className='nameInput'
             type="text"
             placeholder="John..."
             onChange={(event) => {

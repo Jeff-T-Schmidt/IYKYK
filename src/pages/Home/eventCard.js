@@ -7,7 +7,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { flexbox } from '@mui/system';
 
 
-const EventCard = ({userEvents, setEventId, adminEvents, allUserEvents }) => {
+const EventCard = ({setEventId, allUserEvents }) => {
 
   const navigate = useNavigate();
   
@@ -31,9 +31,9 @@ const EventCard = ({userEvents, setEventId, adminEvents, allUserEvents }) => {
                   borderRadius:5,
                   margin: 2,
                   boxShadow: 3,
-
+                  backgroundColor: 'rgba(255,255,255, 0.8)',
                 }} 
-                id={`${allUserEvents.id}`}
+                id={`${allUserEvents.id}`} //this gets the event id of the clicked card
               >
               <Link to="/currentevent"/>
               <CardActionArea  >

@@ -15,47 +15,52 @@ export default function Header(props) {
   // console.log(props)
   return (
     <AppBar position="static" style={{ background: '#4285F4' }}>
-      <Link to='/'>
           <Box
             sx={{
               display: 'flex',
               flexDirection:'row',
+              alignItems: 'center',
             }}
           >
-            <Button 
-                    className="btn1"  
-                    size="large" 
-                    sx={{
-                      color: 'white', 
-                    }}>
-                    <KeyboardBackspaceIcon></KeyboardBackspaceIcon>
-                  </Button>
-            <Typography variant="h3"
-              component="div" sx={{ flexGrow: 1 }} textAlign="center" color="black">
-              IYKYK
-            </Typography>
-            {props.isLoggedIn?(
-                  <>
-                      {/* <Link to={`/home`}><button>Home</button></Link> */}
-                      <Button 
-                        
-                        onClick={props.logout}
-                      >
-                        <LogoutIcon 
-                          sx={{
-                            color: 'white',
-                          }}
-                        />
-                      </Button>
-                  </>
-              ):(
-                  <>
-                      <Link to="/"><Button>Login/Signup</Button></Link> 
+            <Link to='/'>
+              <Button 
+                className="btn1"  
+                size="large" 
+                sx={{
+                  color: 'white', 
+                }}>
+                <KeyboardBackspaceIcon></KeyboardBackspaceIcon>
+              </Button>
+            </Link>
+              <Typography variant="h2"
+                component="div" sx={{ flexGrow: 1, color:'white' }} textAlign="center" color="black">
+                IYKYK
+              </Typography>
+              {props.isLoggedIn?(
+                    <>
+                        {/* <Link to={`/home`}><button>Home</button></Link> */}
+                        <Typography variant="h5"
+                          component="div" sx={{ flexGrow: 1, color:'white', }} textAlign="center" color="black" bottom="0">
+                          Welcome, {props.name}!
+                        </Typography>
+                        <Button 
+                          
+                          onClick={props.logout}
+                        >
+                          <LogoutIcon 
+                            sx={{
+                              color: 'white',
+                            }}
+                          />
+                        </Button>
+                    </>
+                ):(
+                    <>
+                        {/* <Link to="/"><Button>Login/Signup</Button></Link>  */}
 
-                  </>
-              )}
+                    </>
+                )}
           </Box>
-      </Link>
     </AppBar>
   );
 }
