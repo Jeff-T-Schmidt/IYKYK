@@ -84,6 +84,7 @@ function Email({ setEventId, eventId, token }) {
               gap: 3,
               margin: 4
             }}
+            id="inviteStuff"
           >
 
             <TextField
