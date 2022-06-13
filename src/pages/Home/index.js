@@ -41,7 +41,7 @@ const Home = (props) => {
                 </div>
             </div>
             { <div id="homeContainer" sx={{ display: 'flex', justifyContent: 'center',}}>
-                <EventCard allUserEvents={allUserEvents}/>
+                <EventCard allUserEvents={allUserEvents} setEventId={props.setEventId}/>
             </div>}
 
                 
