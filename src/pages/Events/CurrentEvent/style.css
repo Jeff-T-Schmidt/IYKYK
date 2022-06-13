@@ -122,3 +122,28 @@
 .hide {
   opacity: 0 !important;
 }
+
+@media only screen and (max-width: 415px) {
+  body {
+    width: 100vw;
+  }
+
+  #dateContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #eventDetailCard {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #eventNameCard, #eventMapCard {
+    padding: 0;
+  }
+
+  #eventNameCard, #eventMapCard, #eventDescCard {
+    width:85%;
+  }
+
+}

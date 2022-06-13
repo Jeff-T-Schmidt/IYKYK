@@ -22,6 +22,8 @@ body {
       monospace;
   }
 
-  Card {
-    background-color: rgba(0,0,0,0.5);
+  @media only screen and (max-width: 415px) {
+    body {
+      width: 100vw;
+    }
   }

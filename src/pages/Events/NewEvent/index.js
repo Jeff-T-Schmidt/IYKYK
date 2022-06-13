@@ -87,7 +87,7 @@ const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
                             display: 'flex',
                             flexDirection: 'row',
                             justifyContent: 'space-evenly',
-                            
+                            flexWrap: 'wrap',
                         }}
                         id="dateContainer"
                     >
@@ -152,6 +152,7 @@ const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
                             gap: 10,
                             color: 'white',
                         }}
+                        id="eventDetailCard"
                     >
                         <CardContent 
                             sx={{

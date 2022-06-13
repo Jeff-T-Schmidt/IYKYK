@@ -14,7 +14,18 @@ import { useEffect, useState } from "react";
 import SignUp from './pages/Signup/index.js'
 import CurrentEvent from './pages/Events/CurrentEvent/index.js'
 import InviteAttendees from './pages/InvitedAttendees'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      mobile: 410,
+      tablet: 640,
+      laptop: 1024,
+      desktop: 1200,
+    },
+  },
+});
 
 
 function App() {
@@ -88,18 +99,21 @@ function App() {
   }
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} userId={userId} logout={logout} name={name} />
-      <Routes>
-        <Route path='/login' element={<Login login={handleLoginSubmit} userId={userId} isLoggedIn={isLoggedIn}/>} />
-        <Route path='/signup' element={<SignUp signup={handleSignupSubmit} userId={userId} isLoggedIn={isLoggedIn} />} />
-        <Route path='/' element={<Landing userId={userId} isLoggedIn={isLoggedIn}/>} />
-        <Route path='/home' element={<Home userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId} eventData={eventData} adminEventData={adminEventData}/>} />
-        <Route path='/newEvent' element={<NewEvent userId={userId} token={token} isLoggedIn={isLoggedIn}eventId={eventId} setEventId={setEventId}/>} />
-        <Route path='/profile' element={<Profile userId={userId} isLoggedIn={isLoggedIn}/>} />
-        <Route path='/myinvites' element={<MyInvites userId={userId} email={email} isLoggedIn={isLoggedIn} token={token}  eventId={eventId} setEventId={setEventId} allEventData={allEventData}/>} />
-        <Route path='/currentEvent' element={<CurrentEvent name ={name} userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId}/>} />
-        <Route path='/inviteAttendees' element={<InviteAttendees name ={name} userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId}token={token}/>} />
-      </Routes>
+      <ThemeProvider theme={theme}>
+        <Header isLoggedIn={isLoggedIn} userId={userId} logout={logout} name={name} />
+        <Routes>
+          <Route path='/login' element={<Login login={handleLoginSubmit} userId={userId} isLoggedIn={isLoggedIn}/>} />
+          <Route path='/signup' element={<SignUp signup={handleSignupSubmit} userId={userId} isLoggedIn={isLoggedIn} />} />
+          <Route path='/' element={<Landing userId={userId} isLoggedIn={isLoggedIn}/>} />
+          <Route path='/home' element={<Home userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId} eventData={eventData} adminEventData={adminEventData}/>} />
+          <Route path='/newEvent' element={<NewEvent userId={userId} token={token} isLoggedIn={isLoggedIn}eventId={eventId} setEventId={setEventId}/>} />
+          <Route path='/profile' element={<Profile userId={userId} isLoggedIn={isLoggedIn}/>} />
+          <Route path='/myinvites' element={<MyInvites userId={userId} email={email} isLoggedIn={isLoggedIn} token={token}  eventId={eventId} setEventId={setEventId} allEventData={allEventData}/>} />
+          <Route path='/currentEvent' element={<CurrentEvent name ={name} userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId}/>} />
+          <Route path='/inviteAttendees' element={<InviteAttendees name ={name} userId={userId} isLoggedIn={isLoggedIn} eventId={eventId} setEventId={setEventId}token={token}/>} />
+        </Routes>
+
+      </ThemeProvider>
     </>
   );
 }
