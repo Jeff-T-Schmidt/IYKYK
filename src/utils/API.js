@@ -74,5 +74,15 @@ module.exports = {
                 authorization:`Bearer ${token}`
             }
         }).then(res=>res.json())
+    },
+    updateAttendee:(attendeeData,token)=>{
+        return fetch(`${BASE_URL}/api/events/attendees/${attendeeData.id}`,{
+            method:"PUT",
+            body:JSON.stringify(attendeeData),
+            headers:{
+                "Content-Type":"application/json",
+                authorization:`Bearer ${token}`
+            }
+        }).then(res=>res.json())
     }
 }
