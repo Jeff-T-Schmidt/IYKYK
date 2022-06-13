@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { CardActionArea, Button } from '@mui/material';
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { flexbox } from '@mui/system';
 import API from "../../utils/API";
@@ -10,79 +10,99 @@ import API from "../../utils/API";
 
 const InviteCard = (props) => {
     const navigate = useNavigate();
+    const [filteredEvent, setFilteredEvent] = useState([])
+
+    useEffect(() => {
+        const attendeeEvents = props.allEventData.filter(data=>{
+            const invitedEmail = data.attendees.filter(emailData => {
+                // console.log(emailData.going)
+                return emailData.invited_email === props.email
+            })
+            // console.log(invitedEmail)
+            return invitedEmail
+        })
+        setFilteredEvent(attendeeEvents)
+    }, [])
+    // filteredEvent.map(data => {
+    //     console.log(data.attendees)
+    // })
+    console.log(filteredEvent)
 
 
 
-    // const handleClick = (id) => {
-    //     // setEventId(id)
-    //     navigate('/currentevent');
-    // }
+    const handleClick = (id) => {
+        props.setEventId(id)
+    }
+
+    // create button
+    // 
 
 
-    // return (
-        // <div id="popContainer">
-        //     {
-        //         props.allEventData.map((allEventData) => (
-        //             <div className="eventCard" key={attendeeData.id} >
+    return (
+        <div id="popContainer">
+            {
+                filteredEvent.map((allEventData) => (
+                    <div className="eventCard" key={allEventData.id} >
 
-        //                 <Card
-        //                     sx={{
-        //                         borderRadius: 5,
-        //                         margin: 2,
-        //                         boxShadow: 3,
+                        <Card
+                            sx={{
+                                borderRadius: 5,
+                                margin: 2,
+                                boxShadow: 3,
 
-        //                     }}
-        //                     id={`${attendeeData.id}`}
-        //                 >
-        //                     <Link to="/currentevent" />
-        //                     <CardActionArea  >
-        //                         <CardContent >
-        //                             <CardContent
+                            }}
+                            id={`${allEventData.id}`}
+                        >
+                            <Link to="/currentevent" />
+                            <CardActionArea  >
+                                <CardContent >
+                                    <CardContent
 
-        //                             >
-        //                                 <Typography
-        //                                     sx={{
-        //                                         fontWeight: 'bold',
+                                    >
+                                        <Typography
+                                            sx={{
+                                                fontWeight: 'bold',
 
-        //                                     }}
-        //                                     gutterBottom variant="h4"
-        //                                     component="div">
-        //                                     {attendeeData.title}
-        //                                 </Typography>
-        //                                 <CardContent
-        //                                     sx={{
-        //                                         fontWeight: 'light',
-        //                                         display: 'flex',
-        //                                         gap: 2,
-        //                                     }}
-        //                                 >
-        //                                     <Typography
-        //                                         gutterBottom variant="overline"
-        //                                         component="div">
-        //                                         {attendeeData.start_date}
-        //                                     </Typography>
-        //                                     <Typography gutterBottom variant="overline" component="div">
-        //                                         {attendeeData.location}
-        //                                     </Typography>
-        //                                 </CardContent>
-        //                             </CardContent>
-        //                             <Typography
-        //                                 noWrap
-        //                                 sx={{
-        //                                     display: 'flex',
-        //                                     width: 1,
-        //                                 }}
-        //                                 variant="body2"
-        //                                 color="text.secondary">
-        //                                 {attendeeData.details}
-        //                             </Typography>
-        //                         </CardContent>
-        //                     </CardActionArea>
-        //                 </Card>
-        //             </div>
-        //         ))}
-        // </div>
-    // );
+                                            }}
+                                            gutterBottom variant="h4"
+                                            component="div">
+                                            {allEventData.title}
+                                        </Typography>
+                                        <CardContent
+                                            sx={{
+                                                fontWeight: 'light',
+                                                display: 'flex',
+                                                gap: 2,
+                                            }}
+                                        >
+                                            <Typography
+                                                gutterBottom variant="overline"
+                                                component="div">
+                                                {allEventData.start_date}
+                                            </Typography>
+                                            <Typography gutterBottom variant="overline" component="div">
+                                                {allEventData.location}
+                                            </Typography>
+                                        </CardContent>
+                                    </CardContent>
+                                    <Typography
+                                        noWrap
+                                        sx={{
+                                            display: 'flex',
+                                            width: 1,
+                                        }}
+                                        variant="body2"
+                                        color="text.secondary">
+                                        {allEventData.details}
+                                    </Typography>
+                                    <Button onClick={()=> handleClick(allEventData.id)} variant="contained">Going?</Button>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </div>
+                ))}
+        </div>
+    );
 };
 
 export default InviteCard
