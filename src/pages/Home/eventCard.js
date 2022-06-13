@@ -31,9 +31,9 @@ const EventCard = ({setEventId, allUserEvents }) => {
                   borderRadius:5,
                   margin: 2,
                   boxShadow: 3,
-
+                  backgroundColor: 'rgba(255,255,255, 0.8)',
                 }} 
-                id={`${allUserEvents.id}`}
+                id={`${allUserEvents.id}`} //this gets the event id of the clicked card
               >
               <Link to="/currentevent"/>
               <CardActionArea  >

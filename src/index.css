@@ -21,3 +21,7 @@ body {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
+
+  Card {
+    background-color: rgba(0,0,0,0.5);
+  }
