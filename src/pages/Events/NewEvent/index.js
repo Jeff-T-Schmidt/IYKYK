@@ -87,7 +87,7 @@ const NewEvent = ({setEventId,isLoggedIn,token,userId}) => {
                             display: 'flex',
                             flexDirection: 'row',
                             justifyContent: 'space-evenly',
-                            
+                            flexWrap: 'wrap',
                         }}
                         id="dateContainer"
                     >
