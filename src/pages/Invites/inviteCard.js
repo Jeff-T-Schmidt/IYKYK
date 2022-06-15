@@ -11,11 +11,12 @@ import API from "../../utils/API";
 const InviteCard = (props) => {
     const navigate = useNavigate();
     const [filteredEvent, setFilteredEvent] = useState([])
+    const [attendeeId, setAttendeeId] = useState()
 
     useEffect(() => {
         const attendeeEvents = props.allEventData.filter(data=>{
             const invitedEmail = data.attendees.filter(emailData => {
-                // console.log(emailData.going)
+                setAttendeeId(emailData.id)
                 return emailData.invited_email === props.email
             })
             // console.log(invitedEmail)
@@ -26,16 +27,11 @@ const InviteCard = (props) => {
     // filteredEvent.map(data => {
     //     console.log(data.attendees)
     // })
-    console.log(filteredEvent)
-
 
 
     const handleClick = (id) => {
         props.setEventId(id)
     }
-
-    // create button
-    // 
 
 
     return (

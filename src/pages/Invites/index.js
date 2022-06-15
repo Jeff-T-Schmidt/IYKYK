@@ -6,29 +6,12 @@ import InviteCard from './inviteCard';
 
 const MyInvites = (props) => {
     const navigate = useNavigate()
-    // console.log(props.allEventData)
-
-    // for (let i = 0; i < props.allEventData.length; i++) {
-    //     const attendees = (props.allEventData[i].attendees)
-    //     // console.log(attendees)
-    //     for (let i = 0; i < attendees.length; i++) {
-    //         // console.log(props.email, attendees[i].invited_email,attendees[i].going === false)
-    //         if (attendees[i].going === false && props.email === attendees[i].invited_email) {
-    //             // console.log(attendees[i])
-                
-    //         }
-    //     }
-    // }
 
     useEffect(() => {
         if (!props.isLoggedIn) {
             navigate("/")
         }
     })
-
-    useEffect(() => {
-
-    }, [])
 
     return (
         <>
